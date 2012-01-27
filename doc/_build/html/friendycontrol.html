@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FriendyControl application &mdash; vLearnie v0.1 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '#',
+        VERSION:     '0.1',
+        COLLAPSE_MODINDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="vLearnie v0.1 documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             accesskey="M">modules</a> |</li>
+        <li><a href="index.html">vLearnie v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="friendycontrol-application">
+<h1>FriendyControl application<a class="headerlink" href="#friendycontrol-application" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="module-friendycontrol.views">
+<h1>H2 &#8211; Views<a class="headerlink" href="#module-friendycontrol.views" title="Permalink to this headline">¶</a></h1>
+<dl class="attribute">
+<dt id="friendycontrol.views.add_friend">
+<tt class="descclassname">friendycontrol.views.</tt><tt class="descname">add_friend</tt><a class="headerlink" href="#friendycontrol.views.add_friend" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function creates a new <tt class="xref docutils literal"><span class="pre">friendycontrol.FriendPerson</span></tt> object. 
+If everything was right,
+after submiting the content you must be redirected to a page where the 
+friendlist is shown.</p>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">friendycontrol/friend_form.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Context:</strong></dt>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">form</span></tt>: The form object to render.</p>
+<p class="last"><tt class="docutils literal"><span class="pre">add</span></tt>: <tt class="xref docutils literal"><span class="pre">True</span></tt> if you want to re-mark that is an <em>add</em> operation.</p>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="friendycontrol.views.edit_friend">
+<tt class="descclassname">friendycontrol.views.</tt><tt class="descname">edit_friend</tt><a class="headerlink" href="#friendycontrol.views.edit_friend" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use this function if you want to edit a friend list.
+It takes an <tt class="docutils literal"><span class="pre">id</span></tt> argument, which is the <strong>friend id</strong></p>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">friendycontrol/friend_form.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Context:</strong></dt>
+<dd><p class="first"><tt class="docutils literal"><span class="pre">form</span></tt>: The form object to render</p>
+<p class="last"><tt class="docutils literal"><span class="pre">add</span></tt>: <tt class="xref docutils literal"><span class="pre">True</span></tt> if you want to re-mark that is an <em>add</em> operation</p>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="friendycontrol.views.show_main_friendylist">
+<tt class="descclassname">friendycontrol.views.</tt><tt class="descname">show_main_friendylist</tt><a class="headerlink" href="#friendycontrol.views.show_main_friendylist" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns a list with the friend list belonging to the user.</p>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">friendycontrol/friendlist_content.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-friendycontrol.models">
+<h1>H2 &#8211; Models<a class="headerlink" href="#module-friendycontrol.models" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="friendycontrol.models.CompositionList">
+<em class="property">class </em><tt class="descclassname">friendycontrol.models.</tt><tt class="descname">CompositionList</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#friendycontrol.models.CompositionList" title="Permalink to this definition">¶</a></dt>
+<dd>CompositionList allows the user the composition of a list of friends, 
+joining different FriendLists</dd></dl>
+
+<dl class="class">
+<dt id="friendycontrol.models.FriendListGroupName">
+<em class="property">class </em><tt class="descclassname">friendycontrol.models.</tt><tt class="descname">FriendListGroupName</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#friendycontrol.models.FriendListGroupName" title="Permalink to this definition">¶</a></dt>
+<dd>This is the list of friends (FriendList).</dd></dl>
+
+<dl class="class">
+<dt id="friendycontrol.models.FriendPerson">
+<em class="property">class </em><tt class="descclassname">friendycontrol.models.</tt><tt class="descname">FriendPerson</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#friendycontrol.models.FriendPerson" title="Permalink to this definition">¶</a></dt>
+<dd>FriendPerson, object that joins friend Users inside the FriendListGroupName</dd></dl>
+
+<dl class="class">
+<dt id="friendycontrol.models.Readable">
+<em class="property">class </em><tt class="descclassname">friendycontrol.models.</tt><tt class="descname">Readable</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#friendycontrol.models.Readable" title="Permalink to this definition">¶</a></dt>
+<dd>Readable is an object that will point to the FriendListGroupName object. Readable
+is the object that will grant read permissions to the users that are related with
+the FriendListGroupName object.</dd></dl>
+
+<dl class="class">
+<dt id="friendycontrol.models.RelationModel">
+<em class="property">class </em><tt class="descclassname">friendycontrol.models.</tt><tt class="descname">RelationModel</tt><big>(</big><em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#friendycontrol.models.RelationModel" title="Permalink to this definition">¶</a></dt>
+<dd><p>RelationalModel is a model that joins objects from any model with a Readable object.</p>
+<dl class="attribute">
+<dt id="friendycontrol.models.RelationModel.content_object">
+<tt class="descname">content_object</tt><a class="headerlink" href="#friendycontrol.models.RelationModel.content_object" title="Permalink to this definition">¶</a></dt>
+<dd>Provides a generic relation to any object through content-type/object-id
+fields.</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+            <h3><a href="index.html">Table Of Contents</a></h3>
+            <ul>
+<li><a class="reference external" href="#">FriendyControl application</a></li>
+<li><a class="reference external" href="#module-friendycontrol.views">H2 &#8211; Views</a></li>
+<li><a class="reference external" href="#module-friendycontrol.models">H2 &#8211; Models</a></li>
+</ul>
+
+            <h3>This Page</h3>
+            <ul class="this-page-menu">
+              <li><a href="_sources/friendycontrol.txt"
+                     rel="nofollow">Show Source</a></li>
+            </ul>
+          <div id="searchbox" style="display: none">
+            <h3>Quick search</h3>
+              <form class="search" action="search.html" method="get">
+                <input type="text" name="q" size="18" />
+                <input type="submit" value="Go" />
+                <input type="hidden" name="check_keywords" value="yes" />
+                <input type="hidden" name="area" value="default" />
+              </form>
+              <p class="searchtip" style="font-size: 90%">
+              Enter search terms or a module, class or function name.
+              </p>
+          </div>
+          <script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="modindex.html" title="Global Module Index"
+             >modules</a> |</li>
+        <li><a href="index.html">vLearnie v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+      &copy; Copyright 2011, Kiko Fernandez Reyes.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.6.5.
+    </div>
+  </body>
+</html>

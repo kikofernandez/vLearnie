@@ -1,0 +1,19 @@
+# SVN repository #
+##################
+.svn/
+
+# OS generated files #
+######################
+.DS_Store*
+Thumbs.db
+
+# Compiled source #
+###################
+*.com
+*.class
+*.pyc
+*.exe
+*.dll
+*.o
+*.so
+gen/

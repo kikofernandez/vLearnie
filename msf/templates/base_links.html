@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}| Links{% endblock %}
+{% block bodyclass %}links{% endblock %}
+
+{% block extra-head %}
+{% include "jquery_definitions.html" %}
+<script src="{{ MEDIA_URL }}js/jquery_right_hand_menu.js"></script>
+{% endblock %}
+
+{% block menu-group %}
+<h2>Navigation</h2>
+<div id="accordion">
+	<h3><a href="#">Blog</a></h3>
+	<div class="menu-space">
+		<a href="{% url coltrane_entry_archive_index username, spacename %}">Entries</a><br><br>
+		<a href="{% url coltrane_category_list username, spacename %}">Categories</a><br><br>
+		<a href="{% url coltrane_tag_list username, spacename %}">Tags</a><br><br>
+		<a href="{% url coltrane_link_archive_index username, spacename%}">Links</a>
+	</div>
+	
+	<h3><a href="#">Portfolio</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_bio_detail username %}">Bio</a><br><br>
+		<a href="{% url portfolio_category_list username %}">Projects</a>
+	</div>
+	
+	<h3><a href="">Spaces</a></h3>
+	<div class="menu-space">
+		<a href="{% url space_public_space_detail username spacename %}">Main Space</a><br><br>
+		<a href="{% url coltrane_entry_archive_index_space username %}">User Spaces</a>
+	</div>
+	
+	<h3><a href="">Community</a></h3>
+	<div class="menu-space">
+		<a href="{% url community_public_list_communities %}">Community index</a><br>
+	</div>
+
+</div>
+{% endblock %}
+
+{% block second-menu %}
+    {% include "coltrane/cloud_by_entries.html" %}
+{% endblock %}
+
+{% block recent %}
+	{% block recent-entries %}
+	{% load coltrane_tags %}
+		
+		{% get_latest_content coltrane.entry username spacename 5 as latest_entries %}
+		{% if latest_entries %}
+		<h2>Latest entries in the weblog</h2>
+		<ul>
+		    {% for entry in latest_entries %}
+		    <li>
+		        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>, posted in {{ entry.pub_date|date:"F jS, Y"}}.
+		    </li>
+		    {% endfor %}
+		</ul>
+		{% endif %}
+		
+		{% get_latest_content coltrane.link username spacename 5 as latest_links %}
+		{% if latest_links %}
+		<h2>Latest links in the weblog</h2>
+		<ul>
+		   {% for link in latest_links %}
+		   <li>
+		       <a href="{{ link.get_absolute_url }}">{{ link.title }}</a>,
+		       in{{ link.pub_date|date:"F jS, Y" }}.
+		   </li>
+		   {% endfor %}
+		</ul>
+		{% endif %}
+	{% endblock %}
+{% endblock %}

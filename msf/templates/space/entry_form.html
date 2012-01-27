@@ -1,0 +1,173 @@
+{% extends "space/base_menu.html" %}
+ 
+{% block title %} {{ block.super }}| Space | {% if add %}
+												Add
+											 {% else %}
+											    Edit
+											 {% endif %} entry
+{% endblock %}
+
+{% block extra-head %}
+{{ block.super }}
+<script type="text/javascript" src="{{ADMIN_MEDIA_URL}}js/urlify.js"></script>
+{% include "cleditor_javascript_links.html" %}
+<script type="text/javascript">
+$(function(){
+	$( "input", ".send" ).button();
+	$( "#id_pub_date" ).datepicker( {dateFormat:"dd/mm/yy"}); 
+	$("textarea[id='id_body']").cleditor();
+	$("textarea[id='id_excerpt']").cleditor();
+});
+</script>
+<script type="text/javascript">
+function redirect(){
+	window.location.href= "{% url space_space_list_entry_objects space.slug %}";
+}
+</script>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+<h3><a href="#">Blog</a></h3>
+<div class="menu-space">
+	<a href="{% url space_space_create_category space.slug %}">Add new category</a><br><br>
+	<a href="{% url space_space_list_entry_objects space.slug  %}">Cancel</a>
+</div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+	
+	<h3>{% if add %}Add {% else %}Edit {% endif %}Entry</h3>
+	<p>Use the form below to create a new entry; all fields are required.</p>
+	<form method="post" action="">{% csrf_token %}
+		<p>{% if form.non_field_errors %}
+				<span class="error">
+					{{ form.non_field_errors }}
+				</span>
+			{% endif %}
+		</p>
+		
+	
+		<p> {% if form.title.errors %}
+		<span class="error">
+			{{ form.title.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_title">Title:</label>
+		<div class="id_title_corner">
+		{{ form.title }}
+		</div>
+		</p>
+		
+		
+		<p> {% if form.slug.errors %}
+		<span class="error">
+			{{ form.slug.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_slug"></label>
+		{{ form.slug }}</p>
+		
+		
+		<p> {% if form.excerpt.errors %}
+		<span class="error">
+			{{ form.excerpt.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_excerpt">Excerpt:</label><br/>
+		{{ form.excerpt.help_text }} <br/>
+		<div class="excerpt_corner">
+		{{ form.excerpt }}
+		</div></p>
+		
+		
+		
+		<p> {% if form.body.errors %}
+		<span class="error">
+			{{ form.body.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_body">Body:</label><br/>
+		{{ form.body }}</p>
+		
+		
+		
+		<p> {% if form.pub_date.errors %}
+		<span class="error">
+			{{ form.pub_date.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_pub_date">Publication date:</label>
+		{{ form.pub_date }}</p>
+		
+		<!-- 
+		<p> {% if form.enable_comments.errors %}
+		<span class="error">
+			{{ form.enable_comments.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="enable_comments">Enable comments:</label>
+		{{ form.enable_comments }}</p>
+		
+		
+		
+		<p> {% if form.featured.errors %}
+		<span class="error">
+			{{ form.featured.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="featured">Featured:</label>
+		{{ form.featured }}</p>
+		 -->
+		
+		<p> {% if form.status.errors %}
+		<span class="error">
+			{{ form.status.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="status">Status:</label>
+		{{ form.status }}</p>
+		
+		
+		
+		<p> {% if form.categories.errors %}
+		<span class="error">
+			{{ form.categories.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="categories">Categories:</label>
+		{{ form.categories }}</p>
+		
+		
+		<p> {% if form.community.errors %}
+		<span class="error">
+			{{ form.community.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="community">Community:</label>
+		{{ form.community }}</p>
+		
+		
+		<p> {% if form.tags.errors %}
+		<span class="error">
+			{{ form.tags.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="tags">Tags:</label>
+		{{ form.tags }}</p>
+		
+		
+		<div class="send">
+			<input type="submit" value="Submit">
+			<input type="button" value="Cancel" onclick="redirect()">
+		</div>
+	</form>
+	<script type="text/javascript">
+document.getElementById("id_title").onkeyup = function() {
+    var e = document.getElementById("id_slug");
+    if (!e._changed) { e.value = URLify(document.getElementById("id_title").value, 50); }
+}
+</script>
+{% endblock %}

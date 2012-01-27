@@ -1,0 +1,8 @@
+{% if category_list %}
+<h3><a href="#">Categories</a></h3>
+<div class="menu-space">
+	  {% for category in category_list %}
+	  	<a href="{% url portfolio_category_detail username category.slug %}">{{ category }}</a><br><br>
+	  {% endfor %}
+</div>
+{% endif %}

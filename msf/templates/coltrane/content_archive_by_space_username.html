@@ -1,0 +1,19 @@
+{% extends "base_entries.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block content %}
+<h1>Content index</h1>
+{% if object_list %}
+{% for entry in object_list %}
+    <h2>{{entry.title}}</h2>
+    <p><a href="{{ entry.get_absolute_url }}">Read this entry</a></p>
+{% endfor %}
+{% else %}
+<p>There are no entries yet.</p>
+{% endif %}
+
+{% endblock %}
+
+{% block whatis %}
+{% endblock %}

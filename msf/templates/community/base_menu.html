@@ -1,0 +1,17 @@
+{% extends "base_admin.html" %}
+
+{% block title %}Community{% endblock %}
+
+{% block extra-head %}
+{% include "jquery_definitions.html" %}
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery_right_hand_menu.js"></script>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+	<h3><a href="#">Community</a></h3>
+	<div class="menu-space">
+		<a href="{% url community_community_add_community %}">Create new community</a>
+	</div>
+</div>
+{% endblock menu-group %}

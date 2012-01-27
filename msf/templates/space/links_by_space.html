@@ -1,0 +1,51 @@
+{% extends "space/base_menu.html"%}
+
+{% block extra-head %}
+{{ block.super }}
+<script type="text/javascript">
+$(function(){
+	$('.manage a').button();
+	$('dt').css('font-size', '14px');
+	$('.borde').each(function(){
+		$(this).find('dd').hide().end().find('dt').click(function(){
+			$(this).next().slideToggle();
+		});
+		$(this).addClass('ui-corner-all').css({"border": "1px solid grey",
+											   "padding": "5px"});
+		$(this).find('.manage').css({"margin-top": "10px", "margin-bottom": '10px'});
+	});
+});
+
+</script>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+<h3><a href="#">Links</a></h3>
+<div class="menu-space">
+	<a href="{% url space_space_create_link space.slug %}">Create new link</a><br><br>
+	<a href="{% url space_space_list_objects space.slug %}">Go to your space</a>
+</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div id="links"> 
+<h2>Link and brief description</h2>
+{% for link in object_list %}
+<div class="borde">
+	<dt>{{ link }}</dt>
+	<dd>
+	<p>{{ link.description_html|truncatewords_html:"50"|safe }}</p>
+	<div class="manage">
+		<a href="{% url space_space_edit_link space.slug link.slug %}">Edit</a>
+		<a href="{% url space_space_delete_link space.slug link.id %}">Delete</a>
+	</div>
+	</dd>	
+	 
+</div>
+{% endfor %}
+</div>
+
+
+{% endblock %}

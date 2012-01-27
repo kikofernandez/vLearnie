@@ -1,0 +1,15 @@
+{% extends "base_admin.html" %}
+
+{% block extra-head %}
+{% include "jquery_definitions.html" %}
+<script src="{{ MEDIA_URL }}js/jquery_right_hand_menu.js"></script>
+{% endblock %}
+
+
+{% block menu-group %}
+<ul>
+	<li><a href="{% url friendy_add_friend %}">Add friend</a></li>
+	<li><a href="{% url friendy_add_friendlist %}">Create new friendlist</a></li>
+	<li><a href="{% url friendy_add_composition %}">Define permission</a></li>
+</ul>
+{% endblock %}

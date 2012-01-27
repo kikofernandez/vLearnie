@@ -1,0 +1,88 @@
+{% extends "space/base_menu.html" %}
+ 
+{% block title %} {{ block.super }}| {% if add %}
+												Add
+											 {% else %}
+											    Edit
+											 {% endif %} File
+{% endblock %}
+
+{% block extra-head %}
+{{ block.super }}
+<script type="text/javascript" src="{{ADMIN_MEDIA_URL}}js/urlify.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("input",".send").button();
+});
+</script>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+<h3><a href="#">File Manager</a></h3>
+<div class="menu-space">
+	<a href="{% url fhy_show_root_list space.slug %}">Cancel</a>
+</div>
+</div>
+{% endblock %}
+
+{% block content %}
+	<h3>{% if add %}Add {% else %}Edit {% endif %}File</h3>
+	<p>Use the form below to create a new entry; all fields are required.</p>
+	<form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+		<p>{% if form.non_field_errors %}
+				<span class="error">
+					{{ form.non_field_errors }}
+				</span>
+			{% endif %}
+		</p>
+		
+	
+		<p> {% if form.title.errors %}
+		<span class="error">
+			{{ form.title.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_title">Title:</label>
+		{{ form.title }}</p>
+		
+		
+		<p> {% if form.slug.errors %}
+		<span class="error">
+			{{ form.slug.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_slug"></label>
+		{{ form.slug }}</p>
+
+		<p> {% if form.description.errors %}
+		<span class="error">
+			{{ form.description.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_description">Description:</label></p>
+		<p>{{ form.description }}</p>
+		
+		<p> {% if form.file.errors %}
+		<span class="error">
+			{{ form.file.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_file">File:</label>
+		{{ form.file }}</p>
+		
+		<div class="send">
+			<input type="submit" value="Submit">
+			<input type="button" value="Cancel" onclick="redirect()">
+		</div>
+	</form>
+	<script type="text/javascript">
+document.getElementById("id_title").onkeyup = function() {
+    var e = document.getElementById("id_slug");
+    if (!e._changed) { e.value = URLify(document.getElementById("id_title").value, 50); }
+}
+function redirect(){
+	window.location.href= "{% url fhy_show_root_list space.slug %}";
+}
+</script>
+{% endblock %}

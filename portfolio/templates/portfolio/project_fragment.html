@@ -1,0 +1,88 @@
+{% load portfolio %}
+
+{% block extra-head %}
+{{ block.super }}
+
+<style type="text/css">
+blockquote {
+display: block;
+padding: 0 60px;
+width: 350px;
+}
+blockquote:before, blockquote:after {
+color: #69c;
+display: block;
+font-size: 700%;
+width: 50px;
+}
+blockquote:before {
+content: '\201C';
+height: 0;
+margin-left: -0.55em;
+margin-bottom:20px;
+}
+blockquote:after {
+content: '\201D';
+height: 50px;
+margin-top: -70px;
+margin-left: 360px;
+margin-bottom: 70px;
+}
+</style>
+{% endblock %}
+
+
+<div id="project">
+  {% include "portfolio/dates_fragment.html" %}
+  <h2 class="name">{{ project.name }}</h2>
+
+  {% if project.url %}
+  <h3 class="url"><a href="{{ project.url }}">{{ project.url }}</a></h3>
+  {% endif %}
+
+  <span class="skills">
+	Skills:
+	{% for skill in project.skills.all %}
+	    <a href="{% url portfolio_skill_detail username skill.slug %}">{{ skill }}</a>
+	{% endfor %}
+  </span><br><br>
+
+
+  {% if project.pull_quote %}
+  <blockquote>
+  <p>{{ project.pull_quote }}</p>
+  </blockquote>
+  {% endif %}
+  
+
+
+  <div id="description">
+  {{ project.description_html|safe }}
+  </div>
+
+  {% with project.projectfile_set.all as files %}
+  {% if files %}
+  <ol id="files">
+    {% for file in files %}
+    <li><a href="{{ file.file.url }}">{{ file.file.name|split:"/"|last }}</a></li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+  {% endwith %}
+
+  {% with project.projectimage_set.all as images %}
+  {% if images %}
+  <ul id="images">
+    {% for image in images %}
+    <li>
+    <p class="image-description">{{ image.desc }}</p>
+    <img src="{{ image.image.url }}" alt="{{ image.image.name|split:"/"|last }}" title="{{ image.image.name|split:"/"|last }}">
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endwith %}
+
+</div>
+
+

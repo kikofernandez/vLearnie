@@ -1,0 +1,21 @@
+{% extends "space/menu_tags.html"%}
+
+{% block content %}
+<div id="tags"> 
+<h2>Tags by entries</h2>
+{% for tag in tags %}
+	{{ tag }}
+	{% if forloop.last %}{% else %}
+		{% ifequal forloop.revcounter0 1 %}and {% else %},{% endifequal %}
+	{% endif %}	
+{% endfor %}
+
+<h2>Tags by links</h2>
+{% for tag in links %}
+	{{ tag }}
+	{% if forloop.last %}{% else %}
+		{% ifequal forloop.revcounter0 1 %}and {% else %},{% endifequal %}
+	{% endif %}
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base_community.html" %}
+
+{% block content %}
+<style>
+#resource h2, #resource h4 {display: inline;}
+#resource h4 { float:right; margin-top:10px;}
+</style>
+	
+	<div id="resource">
+	<h2>Resources:</h2>
+	
+	<h4>
+	Feed:<a href="{% url community_rss community %}">RSS</a> <a href="{% url community_atom community %}">Atom</a>
+	</h4>
+	</div>
+	<br>
+	
+	{% if not resources %}
+	    <p>There are no resources</p>
+	{% else %}
+	{% for resource in resources %}
+<p><a href="{% url community_community_details community resource.pub_date|date:'Y' resource.pub_date|date:'m' resource.pub_date|date:'d' resource.slug %}">
+	 	{{ resource.title }}</a>, {{resource.pub_date|date:"F jS, Y"}}, 
+	 	<a href="{% url portfolio_bio_detail resource.author.username %}">{{resource.author}}</a><br/>
+	{% endfor %}
+	{% endif %}
+{% endblock %}

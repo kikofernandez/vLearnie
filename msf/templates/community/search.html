@@ -1,0 +1,57 @@
+<div id="searched-values">
+	<table>
+		<tr class="yellow">
+			<td>Name</td>
+			<td>#Resources</td>
+		</tr>
+		{% with community as object_list %}
+			{% for community in object_list %}
+			<tr>
+				<td>
+					<a href="{% url community_archive_index community.slug %}">
+											{{ community.title }}</a>
+				</td>
+				<td>{{community.live_entries}}</td>
+			 </tr>
+			{% endfor %}
+		{% endwith %}
+	</table>
+	<p>
+	{% if is_paginated %}
+	Page: {{ page }} of {{ paginator.num_pages }}
+	{% endif %}
+	
+	{% if page_obj.has_previous %}
+	<a href="?page={{ page_obj.previous_page_number }}">Previous page</a>
+	{% endif %}
+	
+	{% if page_obj.has_next %}
+	<a href="?page={{ page_obj.next_page_number }}">Next page</a>
+	{% endif %}</p>
+</div>
+<!-- 
+{% if community|length %}
+	<table>
+	<tr class='even'>
+		<td colspan="3" class="right">
+		<strong>Found {{ community|length }} communities</strong>
+		</td>
+	</tr>
+	{% for comm in community %}
+	<tr class="{% cycle 'odd' 'even' %}">
+		<td><strong>{{ forloop.counter }}.</strong></td>
+		<td>
+			{{ comm.title}}
+		</td>
+		<td class="rightt">
+		<span class="hint">
+			{{ community.description|truncatewords:"40"|safe }}
+		</span>
+		</td>
+	</tr>
+	{% endfor %}
+	</table>
+ 
+{% endif %}
+
+ -->

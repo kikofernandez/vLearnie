@@ -1,0 +1,27 @@
+{% extends "base_community.html" %}
+
+{% block content %}
+<h2>Communities:</h2>
+  {% if communities %}
+	  {% for community in communities %}
+	  <div class="borde">
+	      <dt>{{ community.title }}</dt>
+	      <dd>
+	      	<div class="excerpt">
+		      {% if community.excerpt %}
+		          {{ community.excerpt_html|truncatewords_html:"50"|safe }}
+		      {% else %}
+		          {{ community.description_html|truncatewords_html:"50"|safe }}
+		      {% endif %}
+	      	</div>
+	      	
+	      	<div class="manage">
+	      	</div>
+	      </dd>
+	  </div>
+	  {% endfor %}
+  {% else %}
+  	<p>There are no communities yet.</p>
+  {% endif %}
+  
+{% endblock %}

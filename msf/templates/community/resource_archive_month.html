@@ -1,0 +1,11 @@
+{% extends "base_community.html" %}
+
+{% block content %}
+<h1>Entries for this month</h1>
+{% for resource in object_list %}
+<p>{{resource.title }}
+   <a href="{% url community_community_details community resource.pub_date|date:'Y' resource.pub_date|date:'m' resource.pub_date|date:'d' resource.slug %}">
+      Read more
+  </a>
+{% endfor %}
+{% endblock %}

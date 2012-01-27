@@ -1,0 +1,154 @@
+{% extends "community/base_menu.html" %}
+ 
+{% block title %}  {% if add %}
+												Add
+											 {% else %}
+											    Edit
+											 {% endif %} community
+{% endblock %}
+
+{% block extra-head %}
+{{ block.super }}
+{% include "cleditor_javascript_links.html" %}
+<script type="text/javascript" src="{{ADMIN_MEDIA_URL}}js/urlify.js"></script>
+<script type="text/javascript">
+function redirect(){
+	window.location.href= "{% url community_community_admin_index community %}";
+}
+</script>
+<script type="text/javascript">
+$(function(){
+	$( "input", ".send" ).button();
+	$( "#id_pub_date" ).datepicker( {dateFormat:"dd/mm/yy"}); 
+	
+	$("textarea[id='id_excerpt']").cleditor();
+	$("textarea[id='id_body']").cleditor();
+});
+</script>
+
+<style type="text/css">
+#id_title{ width: 380px;
+		   height: 20px;
+		   font-size: 10pt
+}
+/*
+#id_excerpt{
+    width: 373px;
+	height: 80px;
+	font-size: 10pt;
+    }
+
+#excerpt{
+     border-width: 0px;
+     color: #8AB08A;
+     font-size:10pt;
+     height:100px;
+     width: 390px;
+}*/
+</style>
+-->
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+	<h3><a href="#">Community</a></h3>
+	<div class="menu-space">
+		<a href="{% url community_community_add_community %}">Create new community</a><br><br>
+		<a href="{% url community_index_communities %}">Cancel</a>
+	</div>
+</div>
+{% endblock menu-group %}
+
+
+{% block content %}
+	<h3>{% if add %}Add {% else %}Edit {% endif %}Community</h3>
+	<p>Use the form below to create a new entry; all fields are required.</p>
+	<form method="post" action="">{% csrf_token %}
+		<p>{% if form.non_field_errors %}
+				<span class="error">
+					{{ form.non_field_errors }}
+				</span>
+			{% endif %}
+		</p>
+		
+	
+		<p> {% if form.title.errors %}
+		<span class="error">
+			{{ form.title.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_title">Title:</label><br/>
+		{{ form.title }}</p>
+		
+		
+		<p> {% if form.slug.errors %}
+		<span class="error">
+			{{ form.slug.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_slug"></label>
+		{{ form.slug }}</p>
+		
+		
+		<p> {% if form.excerpt.errors %}
+		<span class="error">
+			{{ form.excerpt.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_excerpt">Excerpt:</label><br/>
+		<div id="excerpt">
+		{{ form.excerpt }}
+		</div>
+		</p>
+		
+		
+		
+		<p> {% if form.body.errors %}
+		<span class="error">
+			{{ form.body.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_body">Body:</label><br/>
+		{{ form.body }}</p>
+
+		
+		<p> {% if form.pub_date.errors %}
+		<span class="error">
+			{{ form.pub_date.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_pub_date">Publication date:</label><br/>
+		{{ form.pub_date }}</p>
+		
+		
+		<p> {% if form.type.errors %}
+		<span class="error">
+			{{ form.type.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_type">State:</label><br/>
+		{{ form.type }}</p>
+		
+		
+		<p> {% if form.tags.errors %}
+		<span class="error">
+			{{ form.tags.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_tags">Tags:</label><br/>
+		{{ form.tags }}</p>
+		
+		
+		<div class="send">
+			<input type="submit" value="Submit">
+			<input type="button" value="Cancel" onclick="redirect()">
+		</div>
+		
+	</form>
+	<script type="text/javascript">
+document.getElementById("id_title").onkeyup = function() {
+    var e = document.getElementById("id_slug");
+    if (!e._changed) { e.value = URLify(document.getElementById("id_title").value, 50); }
+}
+</script>
+{% endblock %}

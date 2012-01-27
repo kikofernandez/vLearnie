@@ -1,0 +1,20 @@
+{% extends "base_categories.html" %}
+
+{% block title %}{{ block.super }} | Latest categories{% endblock %}
+
+{% block content %}
+<h1>Categories:</h1>
+{%if not object_list %}
+<p>There are no categories yet.</p>
+{% else %}
+{% for entry in object_list %}
+    <p><h2>{{entry.title}}</h2><!-- <a href="{{ entry.get_absolute_url }}">Read more</a></p> -->
+    <a href="{% url coltrane_category_detail username, spacename, entry.slug %}">Read more</a></p>
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+
+{% block whatis%}
+<p>This is a list of the latest {{ number_categories }} categories published in my blog.</p>
+{% endblock %}

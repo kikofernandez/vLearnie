@@ -1,0 +1,18 @@
+{% extends "portfolio/generic_list.html" %}
+
+{% block title %}{{ block.super }}: {{ object }}{% endblock %}
+
+{% block groups %}
+{% include "portfolio/projects_fragment_menu.html" %}
+{% include "portfolio/categories_fragment.html" %}
+{% include "portfolio/skills_fragment.html" %}
+{% include "portfolio/bio_fragment.html" %}
+{% include "portfolio/spaces_fragment.html" %}
+{% include "portfolio/communities_fragment.html" %}
+{% endblock %}
+
+{% block projects %}
+{% with object as project %}
+{% include "portfolio/project_fragment.html" %}
+{% endwith %}
+{% endblock %}

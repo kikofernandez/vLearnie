@@ -1,0 +1,29 @@
+{% extends "base_community.html" %}
+
+{% block menu-group %}
+<h2>Navigation</h2>
+<div id="accordion">
+	<h3><a href="#">Communities</a></h3>
+	<div class="menu-space">
+		<a href="{% url community_public_list_communities %}">Community index</a><br><br>
+		<a href="{% url community_archive_index community %}">Go back </a>
+	</div>
+	
+	<h3><a href="">Spaces</a></h3>
+	<div class="menu-space">
+		<a href="{% url space_space_main_area %}">Spaces index</a>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+{% if object %}
+<h2>{{ object.title }}</h2>
+Author: <a href="{% url portfolio_bio_detail object.author.username %}"> {{object.author.last_name }}, {{ object.author.first_name }} </a>
+<br>
+<br>
+{{object.body_html|safe}}
+{% endif %}
+<p>Go back to the <a href="{% url community_archive_index community %}">community</a>
+{% endblock content %}

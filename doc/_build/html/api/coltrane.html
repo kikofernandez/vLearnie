@@ -1,0 +1,324 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Coltrane &mdash; vLearnie v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="vLearnie v0.1 documentation" href="../index.html" />
+    <link rel="up" title="API Documentation" href="index.html" />
+    <link rel="prev" title="API Documentation" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="API Documentation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="coltrane">
+<h1>Coltrane<a class="headerlink" href="#coltrane" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="get-post-by-author">
+<h2>Get post by author<a class="headerlink" href="#get-post-by-author" title="Permalink to this headline">¶</a></h2>
+<p>Get a list of entries based on the author name</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>author</strong>, the name of the author.</li>
+<li><strong>space</strong>, the id of the space (<strong>optional</strong>).</li>
+<li><strong>pub_date</strong>, the publication date following the format <em>YYYY-MM-DD</em> (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
+  <span class="p">{</span>
+      <span class="s">&quot;body&quot;</span><span class="p">:</span> <span class="s">&quot;aasdasdads afafd&quot;</span><span class="p">,</span>
+      <span class="s">&quot;author&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span>
+          <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Kiko&quot;</span><span class="p">,</span>
+          <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Fernandez Reyes&quot;</span><span class="p">,</span>
+          <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span>
+      <span class="p">},</span>
+      <span class="s">&quot;space&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+          <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;prueba&quot;</span>
+      <span class="p">},</span>
+      <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;nueva&quot;</span><span class="p">,</span>
+      <span class="s">&quot;pub_date&quot;</span><span class="p">:</span> <span class="s">&quot;2011-06-10&quot;</span><span class="p">,</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">6</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt><strong>URL</strong>::</dt>
+<dd><p class="first"><a class="reference external" href="http://localhost:8000/api/blog">http://localhost:8000/api/blog</a>/&lt;author&gt;/</p>
+<p><a class="reference external" href="http://localhost:8000/api/blog">http://localhost:8000/api/blog</a>/&lt;author&gt;/&lt;space_id&gt;/</p>
+<p class="last"><a class="reference external" href="http://localhost:8000/api/blog">http://localhost:8000/api/blog</a>/&lt;author&gt;/&lt;space_id&gt;/&lt;pub_date&gt;/</p>
+</dd>
+</dl>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/blog/admin/'
+
+curl -u admin:1234 'http://localhost:8000/api/blog/admin/5/'
+
+curl -u admin:1234 'http://localhost:8000/api/blog/admin/5/2011-11-02'</pre>
+</div>
+</div>
+<div class="section" id="get-post-by-id">
+<h2>Get post by id<a class="headerlink" href="#get-post-by-id" title="Permalink to this headline">¶</a></h2>
+<p>Using this web service you can get all your entries or just the one with the given <strong>id</strong>.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, <strong>optional argument</strong> where you specify the entry that you want yo retrieve. If you do not provide an <strong>id</strong> argument, then all your entries will be got.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> Either a JSON list of elements (if the <strong>id</strong> field was not provided) or a JSON object which is the entry:</p>
+<div class="highlight-python"><pre>[
+  {
+      "body": "Afortunado yo",
+      "author": {
+          "username": "admin",
+          "first_name": "Kiko",
+          "last_name": "Fernandez Reyes",
+          "id": 1
+      },
+      "space": {
+          "id": 6,
+          "title": "Otra prueba"
+      },
+      "title": "Soy afortunado",
+      "pub_date": "2011-11-03",
+      "id": 18
+  },
+  {
+      "body": "Esto es otra entrada",
+      ...
+  }
+ ]</pre>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/blog/">http://localhost:8000/api/blog/</a> or <a class="reference external" href="http://localhost:8000/api/blog">http://localhost:8000/api/blog</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u &lt;username&gt;:&lt;password&gt; 'http://localhost:8000/api/blog/'
+
+curl -u &lt;username&gt;:&lt;password&gt; 'http://localhost:8000/api/blog/&lt;id&gt;/' -F 'id=&lt;given-id&gt;'</pre>
+</div>
+</div>
+<div class="section" id="create-entry">
+<h2>Create entry<a class="headerlink" href="#create-entry" title="Permalink to this headline">¶</a></h2>
+<p>Create an entry given the information</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last">
+<li><p class="first"><strong>spaceid</strong>, the <strong>spaceid</strong> for the entry to belong to.</p>
+</li>
+<li><p class="first"><strong>title</strong>, the title for the entry.</p>
+</li>
+<li><p class="first"><strong>body</strong>, the body for the entry.</p>
+</li>
+<li><p class="first"><strong>tags</strong>, the tags for the entry.</p>
+</li>
+<li><p class="first"><strong>status</strong>, <strong>optional paramenter</strong>, if this is not supplied the default status is <strong>LIVE</strong>.</p>
+</li>
+<li><p class="first"><strong>pub_date</strong>, the publication date with the following format:</p>
+<div class="highlight-python"><pre>YYYY-MM-DD: 2012-12-12</pre>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;body&quot;</span><span class="p">:</span> <span class="s">&quot;Hola como estamos&quot;</span><span class="p">,</span>
+  <span class="s">&quot;author&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span>
+      <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Kiko&quot;</span><span class="p">,</span>
+      <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Fernandez Reyes&quot;</span><span class="p">,</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="p">},</span>
+  <span class="s">&quot;space&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+      <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Otra prueba&quot;</span>
+  <span class="p">},</span>
+  <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Hola hola&quot;</span><span class="p">,</span>
+  <span class="s">&quot;pub_date&quot;</span><span class="p">:</span> <span class="s">&quot;2011-12-24&quot;</span><span class="p">,</span>
+  <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">19</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/blog/">http://localhost:8000/api/blog/</a></p>
+<p><strong>Method</strong> POST</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/blog/' -F 'spaceid=6' -F 'title=Hola hola' -F 'body=Hola como estamos' -F 'tags=que, tal' -F 'pub_date=2011-12-24' -X POST</pre>
+</div>
+</div>
+<div class="section" id="update-entry-by-id">
+<h2>Update entry by id<a class="headerlink" href="#update-entry-by-id" title="Permalink to this headline">¶</a></h2>
+<p>Update the entry base on the given <strong>id</strong>.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last">
+<li><p class="first"><strong>spaceid</strong>, the <strong>spaceid</strong> for the entry to belong to (<strong>optional</strong>).</p>
+</li>
+<li><p class="first"><strong>title</strong>, the title for the entry (<strong>optional</strong>).</p>
+</li>
+<li><p class="first"><strong>body</strong>, the body for the entry (<strong>optional</strong>).</p>
+</li>
+<li><p class="first"><strong>tags</strong>, the tags for the entry (<strong>optional</strong>).</p>
+</li>
+<li><p class="first"><strong>status</strong>, <strong>optional paramenter</strong>, if this is not supplied the default status is <strong>LIVE</strong> (<strong>optional</strong>).</p>
+</li>
+<li><p class="first"><strong>pub_date</strong>, the publication date (<strong>optional</strong>) with the following format:</p>
+<div class="highlight-python"><pre>YYYY-MM-DD: 2012-12-12</pre>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;body&quot;</span><span class="p">:</span> <span class="s">&quot;Hola como estamos&quot;</span><span class="p">,</span>
+  <span class="s">&quot;author&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span>
+      <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Kiko&quot;</span><span class="p">,</span>
+      <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Fernandez Reyes&quot;</span><span class="p">,</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="p">},</span>
+  <span class="s">&quot;space&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+      <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Otra prueba&quot;</span>
+  <span class="p">},</span>
+  <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Hola holaaa&quot;</span><span class="p">,</span>
+  <span class="s">&quot;pub_date&quot;</span><span class="p">:</span> <span class="s">&quot;2011-12-24&quot;</span><span class="p">,</span>
+  <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">19</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/blog">http://localhost:8000/api/blog</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> PUT</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/blog/19/' -F 'title=Hola holaaa' -X PUT</pre>
+</div>
+</div>
+<div class="section" id="delete-entry-by-id">
+<h2>Delete entry by id<a class="headerlink" href="#delete-entry-by-id" title="Permalink to this headline">¶</a></h2>
+<p>Delete the given entry by the <strong>id</strong>.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the id of the entry.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/blog">http://localhost:8000/api/blog</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> DELETE</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/blog/19/' -X DELETE</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Coltrane</a><ul>
+<li><a class="reference internal" href="#get-post-by-author">Get post by author</a></li>
+<li><a class="reference internal" href="#get-post-by-id">Get post by id</a></li>
+<li><a class="reference internal" href="#create-entry">Create entry</a></li>
+<li><a class="reference internal" href="#update-entry-by-id">Update entry by id</a></li>
+<li><a class="reference internal" href="#delete-entry-by-id">Delete entry by id</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">API Documentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/api/coltrane.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="API Documentation"
+             >previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" >API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Kiko Fernandez Reyes.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

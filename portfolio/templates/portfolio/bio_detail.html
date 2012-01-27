@@ -1,0 +1,33 @@
+{% extends "portfolio/generic_list.html" %}
+
+{% block title %}{{ block.super }}: {{ object.name }} Projects {% endblock %}
+
+{% block extra-head %}
+{{ block.super }}
+<style type="text/css">
+#projects { list-style: none;}
+span {font-size: 1.3em;}
+</style>
+<script type="text/javascript">
+$(function(){
+	$('.borde').addClass('ui-corner-all').css({'border': '2px solid grey',
+												 'padding': '10px',
+												 'margin': '10px'});
+});
+</script>
+{% endblock %}
+
+{% block groups %}
+{% include "portfolio/bio_fragment.html" %}
+{% include "portfolio/projects_fragment_menu.html" %}
+{% include "portfolio/categories_fragment.html" %}
+{% include "portfolio/skills_fragment.html" %}
+{% include "portfolio/spaces_fragment.html" %}
+{% include "portfolio/communities_fragment.html" %}
+{% endblock %}
+
+{% block projects %}
+{% with bio.0 as bio %}
+{% include "portfolio/bios_fragment.html" %}
+{% endwith %}
+{% endblock %}

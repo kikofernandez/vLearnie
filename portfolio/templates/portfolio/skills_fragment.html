@@ -1,0 +1,8 @@
+{% if skill_list %}
+<h3><a href="#">Skills</a></h3>
+<div class="menu-space">
+	{% for skill in skill_list %}
+  		<a href="{% url portfolio_skill_detail username skill.slug %}">{{ skill }}</a><br><br>
+  	{% endfor %}
+</div>
+{% endif %}

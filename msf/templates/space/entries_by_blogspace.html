@@ -1,0 +1,106 @@
+{% extends "space/base_menu.html"%}
+
+{% block extra-head %}
+{{ block.super }}
+<script type="text/javascript">
+$(function(){
+	$('dt').css({'font-size': '14px',
+				 'margin-left': '20px',
+				 'margin-top': '5px',
+				 'margin-bottom': '5px'
+		});
+    $('dd').css({'border-top': '4px solid red',
+        		 'margin-bottom': '10px'});
+	$('.borde').each(function(){
+		$(this).find('dd').hide().end().find('dt').click(function(){
+			$(this).next().slideToggle();
+		});
+		$(this).addClass('ui-corner-all').css({"border": "1px solid grey",
+											   });
+		$(this).find('.details').addClass('ui-corner-all').css({"border": "1px solid grey",
+			    "margin-bottom": '10px',
+			    "padding-top": '10px',
+			    "padding-bottom": '10px',
+			    "padding-left": '5px',
+			    "margin-right": '10px'});
+		
+	});
+	$(".categories").css({'margin-bottom': '5px'})
+	$('.excerpt').css('padding-top', '14px');
+	$('.manage a').button();
+});
+</script>
+{% endblock %}
+
+{% block title %}
+Blog entries
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+<h3><a href="#">Blog</a></h3>
+<div class="menu-space">
+	<!-- <img alt="" src="{{MEDIA_URL}}/images/add_folder.png">-->
+	<a href="{% url space_space_create_entry space.slug %}">Add new entry</a><br><br>
+	<a href="{% url space_space_create_category space.slug %}">Add new category</a><br><br>
+	<a href="{% url space_space_list_category_objects space.slug %}">Edit categories</a><br><br>
+	<a href="{% url space_space_list_objects space.slug %}">Go to your space</a>
+</div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+ 
+<h2>Entries and brief description</h2>
+<div id="entries">
+	{% for entry in object_list %}
+		<div class="borde">
+			
+			<dt>{{ entry.title }}</dt>
+			<dd>
+				<div class="excerpt">
+				{% if entry.excerpt_html %}
+					{{ entry.excerpt_html|truncatewords_html:"50"|safe }}
+				{% else %}
+				    {{ entry.body_html|truncatewords_html:"50"|safe }}
+				{% endif %}
+				</div>
+			
+				<div class="details">
+					<div class="categories">
+					Categories:
+					{% if entry.categories %}
+						{% with entry.categories.all as categories %}
+							{% for category in categories %}
+								<a href="{% url space_space_edit_category space.slug category.slug %}">{{ category.title }}</a>
+								{% if forloop.last %}{% else %}
+									{% ifequal forloop.revcounter0 1 %}and {% else %},{% endifequal %}
+								{% endif %}
+							{% endfor %}
+						{% endwith %}
+					{% else %}
+						There are no categories
+					{% endif %}
+					</div>
+					<div class="tags">
+					Tags:
+					{% if entry.tags %}
+						{{ entry.tags}}
+					{% else %}
+						There are no tags
+					{% endif %}
+					</div>
+				</div>
+			
+				<div class="manage">
+					<a href="{% url space_space_edit_entry space.slug entry.slug %}">Edit</a>
+					<a href="{% url space_space_delete_entry space.slug entry.id %}">Delete</a>
+				</div>
+			</dd>
+		</div>
+		<br>
+	{% endfor %}
+</div>
+
+{% endblock %}

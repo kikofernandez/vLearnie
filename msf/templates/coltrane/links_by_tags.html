@@ -1,0 +1,12 @@
+{% extends "base_tags.html" %}
+
+{% block title %}{{ block.super }} | Latest Links by tags{% endblock %}
+
+{% block content %}
+<h2>Links for the tag: </h2>
+{% for link in object_list %}
+    <a href="{{ link.get_absolute_url }}">{{ link.title }}</a><br/>    
+{% endfor %}
+
+{% endblock %}
+

@@ -1,0 +1,68 @@
+{% extends "friendycontrol/base_menu.html" %}
+ 
+{% block title %} Control manager{% if add %}
+												Add
+											 {% else %}
+											    Edit
+											 {% endif %} friend
+{% endblock %}
+
+{% block extra-head %}
+{{ block.super }}
+<script type="text/javascript">
+$(function(){
+	$("input",".send").button();
+});
+</script>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+<h3><a href="#">Control Manager</a></h3>
+<div class="menu-space">
+	<a href="{% url friendy_show_main_friendylist %}">Cancel</a>
+</div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+	<h3>{% if add %}Add {% else %}Edit {% endif %}Friend</h3>
+	<p>Use the form below to create a new friend; all fields are required.</p>
+
+<form method='post' action=''>{% csrf_token %}
+	<p>{% if form.non_field_errors %}
+				<span class="error">
+					{{ form.non_field_errors }}
+				</span>
+			{% endif %}
+		</p>
+		
+		<p> {% if form.friend.errors %}
+		<span class="error">
+			{{ form.friend.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_friend">Friend:</label>
+		{{ form.friend }}</p>
+		
+		<p> {% if form.group_list.errors %}
+		<span class="error">
+			{{ form.group_list.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_group_list">Friend list:</label><br>
+		{{ form.group_list }}</p>
+		
+	<div class="send">
+		<input type='submit'>
+		<input type="button" value="Cancel" onclick="redirect()">
+	</div>
+</form>
+<script type="text/javascript">
+function redirect(){
+	window.location.href= "{% url friendy_show_main_friendylist %}";
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% if users|length %}
+	<table>
+	<tr class='even'>
+		<td colspan="3" class="right">
+		<strong>Found {{ users|length }} users</strong>
+		</td>
+	</tr>
+	{% for user in users %}
+	<tr class="{% cycle 'odd' 'even' %}">
+		<td><strong>{{ forloop.counter }}.</strong></td>
+		<td>
+			{{ user.first_name }} {{ user.last_name }}<br/>
+			<span class="hint">
+				<a href="{% url coltrane_entry_archive_index_space user.username %}">
+				{{ user.username }}
+				</a>
+			</span>
+		</td>
+		<td class="rightt">
+		<span class="hint">
+		Joined {{ user.date_joined|timesince }} ago<br/>
+		Last logged in {{ user.last_login|timesince }} ago
+		</span>
+		</td>
+	</tr>
+	{% endfor %}
+	</table>
+ 
+{% endif %}
+

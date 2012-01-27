@@ -1,0 +1,24 @@
+{% extends "base_categories.html" %}
+
+{% block title %}{{ block.super }}| {{category.title }}{% endblock %}
+
+{% block content %}
+<h2>Category: {{ category.title }}</h2>
+{{ category.description_html|safe }}
+{% endblock %}
+
+{% block whatis %}
+{% if object_list.count %}
+<p>This category is part of the entr{{ object_list.count|pluralize:"y,ies" }}
+    {% for entry in object_list.all %}
+        <a href="{{ entry.get_absolute_url }}">{{ entry.title }}</a>
+        {% if forloop.last %}{% else %}
+        {% ifequal forloop.revcounter0 1%}and {% else %}, {% endifequal%}
+        {% endif %}
+    {% endfor %}
+    </p>
+{% else %}
+<p>This category isn't part of any entries</p>
+{% endif %}
+
+{% endblock %}

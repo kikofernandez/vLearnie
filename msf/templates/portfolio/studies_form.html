@@ -1,0 +1,100 @@
+{% extends "portfolio/base_menu.html" %}
+
+{% block extra-head %}
+{{ block.super }}
+{% include "cleditor_javascript_links.html" %}
+<script type="text/javascript">
+$(function(){
+	$("input",".send").button();
+	$("textarea[id='id_speciality']").cleditor();
+	$("textarea[id='id_additional_info']").cleditor();
+});
+</script>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+<h3><a href="#">Studies</a></h3>
+<div class="menu-space">
+	<a href="{% url portfolio_main_studies %}">Cancel</a>
+</div>
+</div>
+{% endblock %}
+
+{% block title %}{{block.super}}| {% if add %}Add {% else %}Edit {% endif %}Study{% endblock %}
+
+{% block content %}
+<h3>{% if add %}Add {% else %}Edit {% endif %}Study</h3>
+	<p>Use the form below to create a new study; all fields are required.</p>
+	<form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+		<p>{% if form.non_field_errors %}
+				<span class="error">
+					{{ form.non_field_errors }}
+				</span>
+			{% endif %}
+		</p>
+		
+	
+		<p> {% if form.title.errors %}
+		<span class="error">
+			{{ form.title.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_title">Title:</label><br>
+		{{ form.title }}</p>
+		
+		<p> {% if form.place.errors %}
+		<span class="error">
+			{{ form.place.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_place">Place:</label><br>
+		{{ form.place }}</p>
+		
+		
+		<p> {% if form.start.errors %}
+		<span class="error">
+			{{ form.start.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		
+		<p><label for="id_start">From:</label>
+		{{ form.start }}</p>
+		
+		<p> {% if form.end.errors %}
+		<span class="error">
+			{{ form.end.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_end">To:</label>
+		{{ form.end }}
+		
+		<p> {% if form.speciality.errors %}
+		<span class="error">
+			{{ form.speciality.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_speciality">Speciality:</label>
+		<span class="help_text">{{form.speciality.help_text}}</span><br>
+		{{ form.speciality }}
+		
+		<p> {% if form.additional_info.errors %}
+		<span class="error">
+			{{ form.additional_info.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_additional_info">Additional information:</label><br>
+		{{ form.additional_info }}
+		
+		
+			<div class="send">
+			<input type="submit" value="Submit">
+			<input type="button" value="Cancel" onclick="redirect()">
+		</div>
+	</form>
+	<script type="text/javascript">
+	function redirect(){
+		window.location.href= "{% url portfolio_main_studies %}";
+	}
+	</script>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "base_links.html" %}
+
+{% block title %}{{ block.super }} | Latest links{% endblock %}
+
+{% block content %}
+<h1>Links index</h1>
+{% if latest %}
+{{ latest }}
+{% endif %}
+
+{%if object_list %}
+{% for link in object_list %}
+    <h2>{{link.title}}</h2>
+    <p>Published on {{ link.pub_date|date:"F jS, Y" }}</p>
+   {{ link.description_html|truncatewords_html:"50"|safe }}
+    <p><a href="{{ link.get_absolute_url }}">More information</a></p>
+{% endfor %}
+{% else %}
+<p> There are no links.</p>
+{% endif%}
+{% endblock %}

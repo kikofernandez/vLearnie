@@ -1,0 +1,19 @@
+{% extends "base_links.html" %}
+
+{% block title %}
+{{ block.super }} | Links in {{ day|date:"F j, Y"}}
+{% endblock %}
+
+{% block content %}
+
+<h1>Links by day</h1>
+{% for link in object_list %}
+    <a href="{{ link.get_absolute_url }}">{{ link.title }}</a>, {{ link.pub_date|date:"F j, Y"}}
+        <p>{{ link.description_body|truncatewords_html:"50"|safe}}
+        </p>
+{% endfor %}
+{% endblock %}
+
+{% block whatis %}
+<p>This is a list of entries published in my blog in {{ day|date:"F j, Y"}}.</p>
+{% endblock %}

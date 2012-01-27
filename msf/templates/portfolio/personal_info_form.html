@@ -1,0 +1,145 @@
+{% extends "portfolio/base_menu.html" %}
+
+{% block extra-head %}
+{{ block.super }}
+{% include "cleditor_javascript_links.html" %}
+<script type="text/javascript">
+$(function(){
+	$("input",".send").button();
+	$("textarea[id='id_bio']").cleditor();
+});
+</script>
+<style type="text/css">
+.social input{
+	width: 300px;
+	position: relative;
+	bottom: 15px;
+}
+</style>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+<h3><a href="#">Bio</a></h3>
+<div class="menu-space">
+	<a href="{% url portfolio_main_personal %}">Cancel</a>
+</div>
+</div>
+{% endblock %}
+
+{% block title %}{{block.super}}| {% if add %}Add {% else %}Edit {% endif %}Bio{% endblock %}
+
+{% block content %}
+<h3>{% if add %}Add {% else %}Edit {% endif %}Bio</h3>
+	<p>Use the form below to create a new entry; all fields are required.</p>
+	<form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+		<p>{% if form.non_field_errors %}
+				<span class="error">
+					{{ form.non_field_errors }}
+				</span>
+			{% endif %}
+		</p>
+		
+	
+		<p> {% if form.first_name.errors %}
+		<span class="error">
+			{{ form.first_name.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_first_name">First name:</label>
+		{{ form.first_name }}</p>
+		
+		<p> {% if form.last_name.errors %}
+		<span class="error">
+			{{ form.last_name.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_last_name">Last name:</label>
+		{{ form.last_name }}</p>
+		
+		
+		<p> {% if form.birthday.errors %}
+		<span class="error">
+			{{ form.birthday.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_birthday">birthday:</label>
+		{{ form.birthday }}</p>
+		
+		<!-- 
+		<p> {% if form.current_address.errors %}
+		<span class="error">
+			{{ form.current_address.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_current_address">Current address:</label><br>
+		{{ form.current_address }}</p> -->
+		
+		<p> {% if form.bio.errors %}
+		<span class="error">
+			{{ form.bio.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_bio">Bio:</label><br>
+		{{ form.bio }}</p>
+    	
+    	
+    	<p>{% if social_form.twitter.errors %}
+    	<span class="error">
+			{{ social_form.twitter.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p>
+			<img alt="" src="{{ MEDIA_URL }}/images/social_logo/twitter.png">
+			<span class="social">    	
+	    	{{ social_form.twitter }}
+	    	</span>
+    	</p>
+    	
+    	<p>{% if social_form.linkedin.errors %}
+    	<span class="error">
+			{{ social_form.linkedin.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p>
+	    	<img alt="" src="{{ MEDIA_URL }}/images/social_logo/linkedin.png">
+	    	<span class="social">    	
+	    	{{ social_form.linkedin }}
+    		</span>
+    	</p>
+    	
+    	<p>{% if social_form.facebook.errors %}
+    	<span class="error">
+			{{ social_form.facebook.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+    	<p>
+    		<img alt="" src="{{ MEDIA_URL }}/images/social_logo/facebook.png">
+    		<span class="social">    	
+	    	{{ social_form.facebook }}
+    		</span>
+    	</p>
+    	
+    	<p>{% if social_form.skype.errors %}
+    	<span class="error">
+			{{ form.social_form.skype.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+    	<p>
+    		<img alt="" src="{{ MEDIA_URL }}/images/social_logo/skype.png">
+    		<span class="social">    	
+	    	{{ social_form.skype }}
+    		</span>
+    	</p>
+
+		<div class="send">
+			<input type="submit" value="Submit">
+			<input type="button" value="Cancel" onclick="redirect()">
+		</div>
+	</form>
+	<script type="text/javascript">
+	function redirect(){
+		window.location.href= "{% url portfolio_main_personal %}";
+	}
+	</script>
+{% endblock %}

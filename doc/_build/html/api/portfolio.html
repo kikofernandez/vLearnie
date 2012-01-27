@@ -1,0 +1,662 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Portfolio &mdash; vLearnie v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="vLearnie v0.1 documentation" href="../index.html" />
+    <link rel="up" title="API Documentation" href="index.html" />
+    <link rel="prev" title="Spaces" href="spaces.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spaces.html" title="Spaces"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="portfolio">
+<h1>Portfolio<a class="headerlink" href="#portfolio" title="Permalink to this headline">¶</a></h1>
+<p>In this section you can find the methods for interacting with the <strong>Portfolio API web services</strong>.</p>
+<div class="section" id="get-portfolio">
+<h2>Get portfolio<a class="headerlink" href="#get-portfolio" title="Permalink to this headline">¶</a></h2>
+<p>Get the portfolio information based on the given <strong>id</strong> or get all the portfolios.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the given id to consult (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><pre>[
+  ...,
+  {
+      "first_name": "Jose",
+      "last_name": "Garcia",
+      "bio_html": "Soy un estudiante de la ETSII de la Universidad de Málaga y estoy cerca de finalizar la carrera de Ingenieria Superior en Informática.",
+      "birthday": "1985-11-02",
+      "user": {
+          "username": "alumno",
+          "first_name": "Jose",
+          "last_name": "Garcia",
+          "id": 2
+      },
+      "id": 3
+  }
+]</pre>
+</div>
+<p><strong>URL</strong>:</p>
+<div class="highlight-python"><pre>http://localhost:8000/api/portfolio/pinformation/
+
+http://localhost:8000/api/portfolio/pinformation/2/</pre>
+</div>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/pinformation/'</pre>
+</div>
+</div>
+<div class="section" id="create-portfolio">
+<h2>Create portfolio<a class="headerlink" href="#create-portfolio" title="Permalink to this headline">¶</a></h2>
+<p>Create the portfolio for the user</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>first_name</strong>, the first name of the user.</li>
+<li><strong>last_name</strong>, the last name of the user.</li>
+<li><strong>birthday</strong>, the birthday (<strong>optional</strong>).</li>
+<li><strong>current_address</strong>, the current address (<strong>optional</strong>).</li>
+<li><strong>bio</strong>, a small description of the user&#8217;s life (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Jose&quot;</span><span class="p">,</span>
+    <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Garcia&quot;</span><span class="p">,</span>
+    <span class="s">&quot;birthday&quot;</span><span class="p">:</span> <span class="s">&quot;1985-11-02&quot;</span><span class="p">,</span>
+    <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;alumno&quot;</span><span class="p">,</span>
+        <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Jose&quot;</span><span class="p">,</span>
+        <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Garcia&quot;</span><span class="p">,</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">},</span>
+    <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/portfolio/pinformation/">http://localhost:8000/api/portfolio/pinformation/</a></p>
+<p><strong>Method</strong> POST</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/pinformation/' -F 'first_name=Jose' -F 'last_name=Garcia' -F 'birthday=1985-11-02' -X POST</pre>
+</div>
+</div>
+<div class="section" id="update-portfolio">
+<h2>Update portfolio<a class="headerlink" href="#update-portfolio" title="Permalink to this headline">¶</a></h2>
+<p>Update the portfolio given the <strong>id</strong>.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>first_name</strong>, the first name of the user (<strong>optional</strong>).</li>
+<li><strong>last_name</strong>, the last name of the user (<strong>optional</strong>).</li>
+<li><strong>birthday</strong>, the birthday (<strong>optional</strong>).</li>
+<li><strong>current_address</strong>, the current address (<strong>optional</strong>).</li>
+<li><strong>bio</strong>, a small description of the user&#8217;s life (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/portfolio/pinformation">http://localhost:8000/api/portfolio/pinformation</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> PUT</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/pinformation/2/' -F 'first_name=Jose' -X PUT</pre>
+</div>
+</div>
+<div class="section" id="delete-portfolio">
+<h2>Delete portfolio<a class="headerlink" href="#delete-portfolio" title="Permalink to this headline">¶</a></h2>
+<p>Delete the given portfolio (obviously if you are the owner).</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the <strong>id</strong> of the portfolio.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/portfolio/pinformation">http://localhost:8000/api/portfolio/pinformation</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> DELETE</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/pinformation/2/' -X DELETE</pre>
+</div>
+</div>
+<div class="section" id="get-studies">
+<h2>Get studies<a class="headerlink" href="#get-studies" title="Permalink to this headline">¶</a></h2>
+<p>Get the studies of the given person (<strong>id</strong> or <strong>username</strong>) or the studies of all the users.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the given id to consult (<strong>optional</strong>).</li>
+<li><strong>username</strong>, the username of the person (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
+  <span class="p">{</span>
+      <span class="s">&quot;end&quot;</span><span class="p">:</span> <span class="s">&quot;2009-06-23&quot;</span><span class="p">,</span>
+     <span class="s">&quot;speciality&quot;</span><span class="p">:</span> <span class="s">&quot;Los cursos que realice fueron principalmente del Master de Ciencias Computacionales donde aprendi principalmente IA mediante logica epistemica y administracion de proyectos. Logica epistemica, Programacion PHP&quot;</span><span class="p">,</span>
+      <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Beca Erasmus&quot;</span><span class="p">,</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="s">&quot;start&quot;</span><span class="p">:</span> <span class="s">&quot;2008-09-11&quot;</span><span class="p">,</span>
+      <span class="s">&quot;place&quot;</span><span class="p">:</span> <span class="s">&quot;Universidad de Luxemburgo&quot;</span><span class="p">,</span>
+      <span class="s">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="s">&quot;additional_info&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span>
+  <span class="p">},</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>URL</strong>:</p>
+<div class="highlight-python"><pre>http://localhost:8000/api/portfolio/studies/
+
+http://localhost:8000/api/portfolio/studies/&lt;id&gt;/
+
+http://localhost:8000/api/portfolio/studies/&lt;username&gt;/</pre>
+</div>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/studies/2/'
+
+curl -u admin:1234 'http://localhost:8000/api/portfolio/studies/kiko/'</pre>
+</div>
+</div>
+<div class="section" id="add-study">
+<h2>Add study<a class="headerlink" href="#add-study" title="Permalink to this headline">¶</a></h2>
+<p>Add a new study.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>place</strong>, the place where you studied.</li>
+<li><strong>title</strong>, the title that you got after your studies.</li>
+<li><strong>start</strong>, the date when you started (<strong>format: YYYY-MM-DD</strong>).</li>
+<li><strong>end</strong>, the date when you finished (<strong>optional</strong>).</li>
+<li><strong>speciality</strong>, your specialities (<strong>optional</strong>).</li>
+<li><strong>additional_info</strong>, additional info if necessary (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><pre> {
+    "end": "2009-06-23",
+    "speciality": "Los cursos que realice fueron principalmente del Master de Ciencias Computacionales donde aprendi principalmente IA mediante logica epistemica y administracion de proyectos. Logica epistemica, Programacion PHP",
+    "title": "Beca Erasmus",
+    "id": 4,
+    "start": "2008-09-11",
+    "place": "Universidad de Luxemburgo",
+    "user_id": 2,
+    "additional_info": ""
+}</pre>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/portfolio/studies/">http://localhost:8000/api/portfolio/studies/</a></p>
+<p><strong>Method</strong> POST</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/studies/' -F 'title=Beca Erasmus' -F 'place=Universidad de Luxemburgo' -F 'start=2008-09-11' -F 'end=2009-06-23' -F 'speciality=...' -X POST</pre>
+</div>
+</div>
+<div class="section" id="update-studies">
+<h2>Update studies<a class="headerlink" href="#update-studies" title="Permalink to this headline">¶</a></h2>
+<p>Update the studies given the <strong>id</strong> of the object to change.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>place</strong>, the place where you studied (<strong>optional</strong>).</li>
+<li><strong>title</strong>, the title that you got after your studies (<strong>optional</strong>).</li>
+<li><strong>start</strong>, the date when you started (<strong>format: YYYY-MM-DD) (**optional</strong>).</li>
+<li><strong>end</strong>, the date when you finished (<strong>optional</strong>).</li>
+<li><strong>speciality</strong>, your specialities (<strong>optional</strong>).</li>
+<li><strong>additional_info</strong>, additional info if necessary (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+     <span class="s">&quot;end&quot;</span><span class="p">:</span> <span class="s">&quot;2009-06-23&quot;</span><span class="p">,</span>
+     <span class="s">&quot;speciality&quot;</span><span class="p">:</span> <span class="s">&quot;Los cursos que realice fueron principalmente del Master de Ciencias Computacionales donde aprendi principalmente IA mediante logica epistemica y administracion de proyectos. Logica epistemica, Programacion PHP&quot;</span><span class="p">,</span>
+     <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Beca Erasmus&quot;</span><span class="p">,</span>
+     <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+     <span class="s">&quot;start&quot;</span><span class="p">:</span> <span class="s">&quot;2008-09-11&quot;</span><span class="p">,</span>
+     <span class="s">&quot;place&quot;</span><span class="p">:</span> <span class="s">&quot;Universidad de Luxemburgo&quot;</span><span class="p">,</span>
+     <span class="s">&quot;user_id&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+     <span class="s">&quot;additional_info&quot;</span><span class="p">:</span> <span class="s">&quot;Nada mas&quot;</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/portfolio/studies">http://localhost:8000/api/portfolio/studies</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> PUT</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/studies/4/' -F 'additional_info=Nada más' -X PUT</pre>
+</div>
+</div>
+<div class="section" id="delete-study">
+<h2>Delete study<a class="headerlink" href="#delete-study" title="Permalink to this headline">¶</a></h2>
+<p>Delete the given study (obviously if you are the owner).</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the <strong>id</strong> of the study.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/portfolio/studies">http://localhost:8000/api/portfolio/studies</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> DELETE</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/studies/4/' -X DELETE</pre>
+</div>
+</div>
+<div class="section" id="get-projects">
+<h2>Get projects<a class="headerlink" href="#get-projects" title="Permalink to this headline">¶</a></h2>
+<p>Get project/s given the <strong>id</strong> or <strong>username</strong>. Otherwise, the projects of all the users.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the given id to consult (<strong>optional</strong>).</li>
+<li><strong>username</strong>, the username of the person (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><pre>[
+  {
+      "category": {
+          "user": {
+              "username": "alumno",
+              "first_name": "Jose",
+              "last_name": "Garcia",
+              "id": 2
+          },
+          "name": "nueva",
+          "id": 1
+      },
+      "end_date": "2011-05-25",
+      "name": "MSF",
+      "url": "",
+      "user": {
+          "username": "alumno",
+          "first_name": "Jose",
+          "last_name": "Garcia",
+          "id": 2
+      },
+      "id"=3,
+      "start_date": "2011-05-25",
+      "pull_quote": "",
+      "short_description": "Colaboracion realizada para MSF.",
+      "slug": "msf",
+      "description": "asdasdasd aasdasd"
+  },
+  ...
+]</pre>
+</div>
+<p><strong>URL</strong>:</p>
+<div class="highlight-python"><pre>http://localhost:8000/api/portfolio/project/
+
+http://localhost:8000/api/portfolio/project/&lt;id&gt;/
+
+http://localhost:8000/api/portfolio/project/&lt;username&gt;/</pre>
+</div>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/project/2/'
+
+curl -u admin:1234 'http://localhost:8000/api/portfolio/project/kiko/'</pre>
+</div>
+</div>
+<div class="section" id="add-project">
+<h2>Add project<a class="headerlink" href="#add-project" title="Permalink to this headline">¶</a></h2>
+<p>Add a new project.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>start_date</strong>, the date when you started (<strong>format: YYYY-MM-DD</strong>).</li>
+<li><strong>end_date</strong>, the date when you finished (<strong>optional</strong>).</li>
+<li><strong>name</strong>, name of the project.</li>
+<li><strong>category</strong>, category of the project.</li>
+<li><strong>url</strong>, URL of the project (<strong>optional</strong>).</li>
+<li><strong>pull_quote</strong>, what they said (<strong>optional</strong>).</li>
+<li><strong>short_description</strong>, a short description of the project (<strong>optional</strong>).</li>
+<li><strong>description</strong>, the description of the project (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><pre>{
+    "category": {
+        "user": {
+            "username": "alumno",
+            "first_name": "Jose",
+            "last_name": "Garcia",
+            "id": 2
+        },
+        "name": "nueva",
+        "id": 1
+    },
+    "end_date": "2011-05-25",
+    "name": "MSF",
+    "url": "",
+    "user": {
+        "username": "alumno",
+        "first_name": "Jose",
+        "last_name": "Garcia",
+        "id": 2
+    },
+    "id"=3,
+    "start_date": "2011-05-25",
+    "pull_quote": "",
+    "short_description": "Colaboracion realizada para MSF.",
+    "slug": "msf",
+    "description": "asdasdasd aasdasd"
+}</pre>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/portfolio/project/">http://localhost:8000/api/portfolio/project/</a></p>
+<p><strong>Method</strong> POST</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/project/' -F 'start_date=2011-05-25' -F 'end_date=2011-05-25' -F 'short_description=Colaboracion realizada para MSF' -F 'description=asdasdasd aasdasd' -F 'category=1' -X POST</pre>
+</div>
+</div>
+<div class="section" id="update-project">
+<h2>Update project<a class="headerlink" href="#update-project" title="Permalink to this headline">¶</a></h2>
+<p>Update the project given the <strong>id</strong> of the object to change.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>start_date</strong>, the date when you started (<strong>format: YYYY-MM-DD</strong>) (<strong>optional</strong>).</li>
+<li><strong>end_date</strong>, the date when you finished (<strong>optional</strong>).</li>
+<li><strong>name</strong>, name of the project (<strong>optional</strong>).</li>
+<li><strong>category</strong>, category of the project (<strong>optional</strong>).</li>
+<li><strong>url</strong>, URL of the project (<strong>optional</strong>).</li>
+<li><strong>pull_quote</strong>, what they said (<strong>optional</strong>).</li>
+<li><strong>short_description</strong>, a short description of the project (<strong>optional</strong>).</li>
+<li><strong>description</strong>, the description of the project (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><pre>{
+     "category": {
+         "user": {
+             "username": "alumno",
+             "first_name": "Jose",
+             "last_name": "Garcia",
+             "id": 2
+         },
+         "name": "nueva",
+         "id": 1
+     },
+     "end_date": "2011-05-25",
+     "name": "MSF",
+     "url": "",
+     "user": {
+         "username": "alumno",
+         "first_name": "Jose",
+         "last_name": "Garcia",
+         "id": 2
+     },
+     "id"=3,
+     "start_date": "2011-05-25",
+     "pull_quote": "",
+     "short_description": "Colaboracion realizada para MSF.",
+     "slug": "msf",
+     "description": "Cambio"
+ }</pre>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/portfolio/project">http://localhost:8000/api/portfolio/project</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> PUT</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/project/3/' -F 'description=Cambio' -X PUT</pre>
+</div>
+</div>
+<div class="section" id="delete-project">
+<h2>Delete project<a class="headerlink" href="#delete-project" title="Permalink to this headline">¶</a></h2>
+<p>Delete the given project (obviously if you are the owner).</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the <strong>id</strong> of the project.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/portfolio/project">http://localhost:8000/api/portfolio/project</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> DELETE</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/project/3/' -X DELETE</pre>
+</div>
+</div>
+<div class="section" id="get-skills">
+<h2>Get skills<a class="headerlink" href="#get-skills" title="Permalink to this headline">¶</a></h2>
+<p>Get the skills given by the <strong>id</strong> or <strong>username</strong>. Otherwise, the skills of all the users.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the given id to consult (<strong>optional</strong>).</li>
+<li><strong>username</strong>, the username of the person (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
+  <span class="p">{</span>
+      <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;kiko&quot;</span><span class="p">,</span>
+          <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Kiko&quot;</span><span class="p">,</span>
+          <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Fernandez&quot;</span><span class="p">,</span>
+          <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span>
+      <span class="p">},</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;sadsdf&quot;</span><span class="p">,</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span>
+  <span class="p">},</span>
+     <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>URL</strong>:</p>
+<div class="highlight-python"><pre>http://localhost:8000/api/portfolio/skill/
+
+http://localhost:8000/api/portfolio/skill/&lt;id&gt;/
+
+http://localhost:8000/api/portfolio/skill/&lt;username&gt;/</pre>
+</div>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/skill/2/'
+
+curl -u admin:1234 'http://localhost:8000/api/portfolio/skill/kiko/'</pre>
+</div>
+</div>
+<div class="section" id="add-skill">
+<h2>Add skill<a class="headerlink" href="#add-skill" title="Permalink to this headline">¶</a></h2>
+<p>Add a new skill to your portfolio.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>name</strong>, the name of your skill.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;kiko&quot;</span><span class="p">,</span>
+        <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Kiko&quot;</span><span class="p">,</span>
+        <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Fernandez&quot;</span><span class="p">,</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span>
+    <span class="p">},</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;invisibility&quot;</span><span class="p">,</span>
+    <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/portfolio/skill/">http://localhost:8000/api/portfolio/skill/</a></p>
+<p><strong>Method</strong> POST</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/skill/' -F 'name=invisibility' -X POST</pre>
+</div>
+</div>
+<div class="section" id="update-skill">
+<h2>Update skill<a class="headerlink" href="#update-skill" title="Permalink to this headline">¶</a></h2>
+<p>Update the skill given the <strong>id</strong> of the object to change.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>name</strong>, change the name (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;kiko&quot;</span><span class="p">,</span>
+        <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Kiko&quot;</span><span class="p">,</span>
+        <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Fernandez&quot;</span><span class="p">,</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">3</span>
+    <span class="p">},</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;OOP&quot;</span><span class="p">,</span>
+    <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/portfolio/skill">http://localhost:8000/api/portfolio/skill</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> PUT</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/skill/4/' -F 'name=OOP' -X PUT</pre>
+</div>
+</div>
+<div class="section" id="delete-skill">
+<h2>Delete skill<a class="headerlink" href="#delete-skill" title="Permalink to this headline">¶</a></h2>
+<p>Delete the given skill (obviously if you are the owner).</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the <strong>id</strong> of the skill.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/portfolio/skill">http://localhost:8000/api/portfolio/skill</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> DELETE</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/portfolio/skill/4/' -X DELETE</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Portfolio</a><ul>
+<li><a class="reference internal" href="#get-portfolio">Get portfolio</a></li>
+<li><a class="reference internal" href="#create-portfolio">Create portfolio</a></li>
+<li><a class="reference internal" href="#update-portfolio">Update portfolio</a></li>
+<li><a class="reference internal" href="#delete-portfolio">Delete portfolio</a></li>
+<li><a class="reference internal" href="#get-studies">Get studies</a></li>
+<li><a class="reference internal" href="#add-study">Add study</a></li>
+<li><a class="reference internal" href="#update-studies">Update studies</a></li>
+<li><a class="reference internal" href="#delete-study">Delete study</a></li>
+<li><a class="reference internal" href="#get-projects">Get projects</a></li>
+<li><a class="reference internal" href="#add-project">Add project</a></li>
+<li><a class="reference internal" href="#update-project">Update project</a></li>
+<li><a class="reference internal" href="#delete-project">Delete project</a></li>
+<li><a class="reference internal" href="#get-skills">Get skills</a></li>
+<li><a class="reference internal" href="#add-skill">Add skill</a></li>
+<li><a class="reference internal" href="#update-skill">Update skill</a></li>
+<li><a class="reference internal" href="#delete-skill">Delete skill</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="spaces.html"
+                        title="previous chapter">Spaces</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/api/portfolio.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="spaces.html" title="Spaces"
+             >previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" >API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Kiko Fernandez Reyes.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{% extends "portfolio/base2.html" %}
+
+{% block menu-group %}
+<h2>Navigation</h2>
+<div id="accordion">
+{% block groups %}{% endblock %}
+</div>
+
+{% endblock %}
+{% block content %}
+<div id="projects">
+{% block projects %}{% endblock %}
+</div>
+
+{% endblock %}

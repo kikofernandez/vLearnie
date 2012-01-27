@@ -1,0 +1,87 @@
+{% extends "space/base_menu.html" %}
+ 
+{% block title %} {{ block.super }}| Space | {% if add %}
+												Add
+											 {% else %}
+											    Edit
+											 {% endif %} category
+{% endblock %}
+
+{% block extra-head %}
+{{ block.super }}
+<script type="text/javascript" src="{{ADMIN_MEDIA_URL}}js/urlify.js"></script>
+{% include "cleditor_javascript_links.html" %}
+<script type="text/javascript">
+$(function(){
+	$("input",".send").button();
+	$("textarea[id='id_description']").cleditor();
+});
+</script>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+<h3><a href="#">Category</a></h3>
+<div class="menu-space">
+	<a href="{% url space_space_list_category_objects space.slug %}">Cancel</a>
+</div>
+</div>
+{% endblock %}
+
+{% block content %}
+	<h3>{% if add %}Add {% else %}Edit {% endif %}Category</h3>
+	<p>Use the form below to create a new category; all fields are required.</p>
+	<form method="post" action="">{% csrf_token %}
+		<p>{% if form.non_field_errors %}
+				<span class="error">
+					{{ form.non_field_errors }}
+				</span>
+			{% endif %}
+		</p>
+		
+	
+		<p> {% if form.title.errors %}
+		<span class="error">
+			{{ form.title.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_title">Title:</label>
+		{{ form.title }}</p>
+		
+		
+		<p> {% if form.slug.errors %}
+		<span class="error">
+			{{ form.slug.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_slug"></label>
+		{{ form.slug }}</p>
+		
+		
+		
+		<p> {% if form.description.errors %}
+		<span class="error">
+			{{ form.description.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_body">Description:</label> <br/>
+		{{ form.description }}
+		</p>
+		
+		<div class="send">
+			<input type="submit" value="Submit">
+			<input type="button" value="Cancel" onclick="redirect()">
+		</div>
+	</form>
+	<script type="text/javascript">
+document.getElementById("id_title").onkeyup = function() {
+    var e = document.getElementById("id_slug");
+    if (!e._changed) { e.value = URLify(document.getElementById("id_title").value, 50); }
+}
+
+function redirect(){
+	window.location.href= "{% url space_space_list_entry_objects space.slug %}";
+}
+
+</script>
+{% endblock %}

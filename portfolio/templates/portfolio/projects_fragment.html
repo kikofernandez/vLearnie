@@ -1,0 +1,43 @@
+{% load portfolio %}
+<h2>
+{% if current_view %}
+	{% if current_view == "category" %}
+	Projects under the category "{{current_slug}}"
+	{% else %}
+		{% if current_view == "project" %}
+		project
+		{% else %}
+			{% if current_view == "skill" %}
+				Projects with skill "{{current_slug}}"
+			{% endif %}
+		{% endif %}
+	{% endif %}
+{% endif %}
+</h2>
+
+<ul id="projects">
+  {% for project in projects.all %}
+  <div class="project">
+	  {% include "portfolio/dates_fragment.html" %}
+	  <h2><a href="{% url portfolio_project_detail username project.slug %}">{{ project }}</a></h2>
+	  <span class="skills">
+	  		Skills:
+		    {% for skill in project.skills.all %}
+		    <a href="{% url portfolio_skill_detail username skill.slug %}">{{ skill }}</a>
+		    {% endfor %}
+	  </span>
+	  <br><br>
+	  {{ project.short_description|safe }}
+	
+	  {% with project.projectimage_set.all as images %}
+		  {% if images %}
+		  		{% with images.0 as image %}  
+		  		<img src="{{ image.image.url }}" alt="{{ image.image.name|split:"/"|last }}" title="{{ image.image.name|split:"/"|last }}">
+		  		{% endwith %}
+		  {% endif %}
+	  {% endwith %}
+
+  </div>
+  {% endfor %}
+</ul>
+

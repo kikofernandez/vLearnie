@@ -1,0 +1,12 @@
+{% extends "space/base_menu.html" %}
+
+{% block title %} Tags {% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+<h3><a href="#">Tags</a></h3>
+<div class="menu-space">
+	<a href="{% url space_space_list_objects space.slug %}">Go to your space</a>
+</div>
+</div>
+{% endblock %}

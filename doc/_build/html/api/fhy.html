@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>File Handler (FHY) &mdash; vLearnie v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="vLearnie v0.1 documentation" href="../index.html" />
+    <link rel="up" title="API Documentation" href="index.html" />
+    <link rel="prev" title="Community" href="community.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="community.html" title="Community"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="file-handler-fhy">
+<h1>File Handler (FHY)<a class="headerlink" href="#file-handler-fhy" title="Permalink to this headline">¶</a></h1>
+<p>In this section you can find the methods that we have built in order to provide
+you with a set of web services for creating your own application.</p>
+<div class="section" id="consult-files-by-username">
+<h2>Consult files by username<a class="headerlink" href="#consult-files-by-username" title="Permalink to this headline">¶</a></h2>
+<p>Retrieve the file/s information via the given username.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>username</strong>, your username.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><pre>[
+  {
+      "description": "",
+      "title": "Pruebas",
+      "space_id": 1,
+      "file": "files/2011/04/15/Francisco_R._Fernandez_Reyes.png",
+      "pub_date": "2011-02-07",
+      "id": 11
+  },
+  {
+  ...
+  }
+]</pre>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy">http://localhost:8000/api/fhy</a>/&lt;username&gt;/files/</p>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/fhy/admin/files/'</pre>
+</div>
+</div>
+<div class="section" id="consult-images-by-username">
+<h2>Consult images by username<a class="headerlink" href="#consult-images-by-username" title="Permalink to this headline">¶</a></h2>
+<p>Retrieve the image/s information via the given username.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>username</strong>, your username.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><pre>[
+  {
+      "description": "",
+      "title": "Pruebas",
+      "space_id": 1,
+      "file": "files/2011/04/15/Francisco_R._Fernandez_Reyes.png",
+      "pub_date": "2011-02-07",
+      "id": 11
+  },
+  {
+  ...
+  }
+]</pre>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy">http://localhost:8000/api/fhy</a>/&lt;username&gt;/images/</p>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/fhy/admin/images/'</pre>
+</div>
+</div>
+<div class="section" id="consult-by-space">
+<h2>Consult by space<a class="headerlink" href="#consult-by-space" title="Permalink to this headline">¶</a></h2>
+<p>Consult the information of the files, images and folders of the given space.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>space_id</strong>, the id of the space to consult.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> Return a list of files, images and folders, for instance:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
+  <span class="p">[</span>
+      <span class="p">{</span>
+          <span class="s">&quot;file&quot;</span><span class="p">:</span> <span class="s">&quot;files/2011/11/05/person.png&quot;</span><span class="p">,</span>
+          <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+          <span class="s">&quot;space&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+              <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+                  <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span>
+                  <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Kiko&quot;</span><span class="p">,</span>
+                  <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Fernandez Reyes&quot;</span>
+              <span class="p">},</span>
+              <span class="s">&quot;slug&quot;</span><span class="p">:</span> <span class="s">&quot;mi-primer-espacio&quot;</span><span class="p">,</span>
+              <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Mi primer espacio&quot;</span>
+          <span class="p">},</span>
+          <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;hola&quot;</span><span class="p">,</span>
+          <span class="s">&quot;content_type&quot;</span><span class="p">:</span> <span class="p">{</span>
+              <span class="s">&quot;model&quot;</span><span class="p">:</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
+              <span class="s">&quot;app_label&quot;</span><span class="p">:</span> <span class="s">&quot;fhy&quot;</span><span class="p">,</span>
+              <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+              <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;root&quot;</span>
+          <span class="p">},</span>
+          <span class="s">&quot;pub_date&quot;</span><span class="p">:</span> <span class="s">&quot;2011-11-05&quot;</span><span class="p">,</span>
+          <span class="s">&quot;slug&quot;</span><span class="p">:</span> <span class="s">&quot;hola&quot;</span>
+      <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy">http://localhost:8000/api/fhy</a>/&lt;space_id&gt;/</p>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/fhy/1/'</pre>
+</div>
+</div>
+<div class="section" id="consult-file-by-id">
+<h2>Consult file by id<a class="headerlink" href="#consult-file-by-id" title="Permalink to this headline">¶</a></h2>
+<p>Retrieve the file/s information. If the <strong>id</strong> is given, then we will return
+the information for that specific item.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the id of the resource (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;file&quot;</span><span class="p">:</span> <span class="s">&quot;files/2011/11/05/person.png&quot;</span><span class="p">,</span>
+  <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+  <span class="s">&quot;space&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span>
+          <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Kiko&quot;</span><span class="p">,</span>
+          <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Fernandez Reyes&quot;</span>
+      <span class="p">},</span>
+      <span class="s">&quot;slug&quot;</span><span class="p">:</span> <span class="s">&quot;mi-primer-espacio&quot;</span><span class="p">,</span>
+      <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Mi primer espacio&quot;</span>
+  <span class="p">},</span>
+  <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;hola&quot;</span><span class="p">,</span>
+  <span class="s">&quot;content_type&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;model&quot;</span><span class="p">:</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
+      <span class="s">&quot;app_label&quot;</span><span class="p">:</span> <span class="s">&quot;fhy&quot;</span><span class="p">,</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;root&quot;</span>
+  <span class="p">},</span>
+  <span class="s">&quot;pub_date&quot;</span><span class="p">:</span> <span class="s">&quot;2011-11-05&quot;</span><span class="p">,</span>
+  <span class="s">&quot;slug&quot;</span><span class="p">:</span> <span class="s">&quot;hola&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy/file">http://localhost:8000/api/fhy/file</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/fhy/file/52/'</pre>
+</div>
+</div>
+<div class="section" id="consult-image-by-id">
+<h2>Consult image by id<a class="headerlink" href="#consult-image-by-id" title="Permalink to this headline">¶</a></h2>
+<p>Retrieve the image/s information. If the <strong>id</strong> is given, then we will return
+the information for that specific item.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the id of the resource (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;file&quot;</span><span class="p">:</span> <span class="s">&quot;files/2011/11/05/person.png&quot;</span><span class="p">,</span>
+  <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+  <span class="s">&quot;space&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span>
+          <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Kiko&quot;</span><span class="p">,</span>
+          <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Fernandez Reyes&quot;</span>
+      <span class="p">},</span>
+      <span class="s">&quot;slug&quot;</span><span class="p">:</span> <span class="s">&quot;mi-primer-espacio&quot;</span><span class="p">,</span>
+      <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Mi primer espacio&quot;</span>
+  <span class="p">},</span>
+  <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;hola&quot;</span><span class="p">,</span>
+  <span class="s">&quot;content_type&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;model&quot;</span><span class="p">:</span> <span class="s">&quot;root&quot;</span><span class="p">,</span>
+      <span class="s">&quot;app_label&quot;</span><span class="p">:</span> <span class="s">&quot;fhy&quot;</span><span class="p">,</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+      <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;root&quot;</span>
+  <span class="p">},</span>
+  <span class="s">&quot;pub_date&quot;</span><span class="p">:</span> <span class="s">&quot;2011-11-05&quot;</span><span class="p">,</span>
+  <span class="s">&quot;slug&quot;</span><span class="p">:</span> <span class="s">&quot;hola&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy/image">http://localhost:8000/api/fhy/image</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/fhy/image/52/'</pre>
+</div>
+</div>
+<div class="section" id="create-file">
+<h2>Create file<a class="headerlink" href="#create-file" title="Permalink to this headline">¶</a></h2>
+<p>Create a new file</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>title</strong>, the title for the file.</li>
+<li><strong>space</strong>, the id of the space.</li>
+<li><strong>file</strong>, the file to upload.</li>
+<li><strong>description</strong>, the description of the file.</li>
+<li><strong>pub_date</strong>, the publication date in the format &#8216;YYYY-MM-DD&#8217;.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy/file/">http://localhost:8000/api/fhy/file/</a></p>
+<p><strong>Method</strong> POST</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/fhy/file/' -X POST -F 'title=hola' -F 'space=1' -F 'file=@/Users/kikofernandezrey/Desktop/person.png'</pre>
+</div>
+</div>
+<div class="section" id="create-image">
+<h2>Create image<a class="headerlink" href="#create-image" title="Permalink to this headline">¶</a></h2>
+<p>Upload a new image</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>title</strong>, the title for the image.</li>
+<li><strong>space</strong>, the id of the space.</li>
+<li><strong>file</strong>, the file to upload.</li>
+<li><strong>description</strong>, the description of the image.</li>
+<li><strong>pub_date</strong>, the publication date in the format &#8216;YYYY-MM-DD&#8217;.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy/image/">http://localhost:8000/api/fhy/image/</a></p>
+<p><strong>Method</strong> POST</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/fhy/image/' -X POST -F 'title=hola' -F 'space=1' -F 'file=@/Users/kikofernandezrey/Desktop/person.png'</pre>
+</div>
+</div>
+<div class="section" id="update-file">
+<h2>Update file<a class="headerlink" href="#update-file" title="Permalink to this headline">¶</a></h2>
+<p>Update the given file</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>title</strong>, the title for the file.</li>
+<li><strong>file</strong>, the file to upload.</li>
+<li><strong>description</strong>, the description of the file.</li>
+<li><strong>pub_date</strong>, the publication date in the format &#8216;YYYY-MM-DD&#8217;.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy/file/">http://localhost:8000/api/fhy/file/</a></p>
+<p><strong>Method</strong> PUT</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/fhy/file/' -F 'title=hola' -X PUT</pre>
+</div>
+</div>
+<div class="section" id="update-image">
+<h2>Update image<a class="headerlink" href="#update-image" title="Permalink to this headline">¶</a></h2>
+<p>Update the given image</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>title</strong>, the title for the image.</li>
+<li><strong>file</strong>, the file to upload.</li>
+<li><strong>description</strong>, the description of the file.</li>
+<li><strong>pub_date</strong>, the publication date in the format &#8216;YYYY-MM-DD&#8217;.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy/image/">http://localhost:8000/api/fhy/image/</a></p>
+<p><strong>Method</strong> PUT</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/fhy/image/' -F 'title=hola' -X PUT</pre>
+</div>
+</div>
+<div class="section" id="delete-file">
+<h2>Delete file<a class="headerlink" href="#delete-file" title="Permalink to this headline">¶</a></h2>
+<p>Delete the given file</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the id of the file.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy/file">http://localhost:8000/api/fhy/file</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> DELETE</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/fhy/file/55/' -X DELETE</pre>
+</div>
+</div>
+<div class="section" id="delete-image">
+<h2>Delete image<a class="headerlink" href="#delete-image" title="Permalink to this headline">¶</a></h2>
+<p>Delete the given image</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the id of the image.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy/image">http://localhost:8000/api/fhy/image</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> DELETE</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/image/file/55/' -X DELETE</pre>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Delete file<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Delete the given file.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the id of the file resource to delete.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy/delete_file">http://localhost:8000/api/fhy/delete_file</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> DELETE</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/fhy/delete_file/1/'</pre>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Delete image<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Delete the given image.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the id of the image resource to delete.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/fhy/delete_image">http://localhost:8000/api/fhy/delete_image</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> DELETE</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/fhy/delete_image/1/'</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">File Handler (FHY)</a><ul>
+<li><a class="reference internal" href="#consult-files-by-username">Consult files by username</a></li>
+<li><a class="reference internal" href="#consult-images-by-username">Consult images by username</a></li>
+<li><a class="reference internal" href="#consult-by-space">Consult by space</a></li>
+<li><a class="reference internal" href="#consult-file-by-id">Consult file by id</a></li>
+<li><a class="reference internal" href="#consult-image-by-id">Consult image by id</a></li>
+<li><a class="reference internal" href="#create-file">Create file</a></li>
+<li><a class="reference internal" href="#create-image">Create image</a></li>
+<li><a class="reference internal" href="#update-file">Update file</a></li>
+<li><a class="reference internal" href="#update-image">Update image</a></li>
+<li><a class="reference internal" href="#delete-file">Delete file</a></li>
+<li><a class="reference internal" href="#delete-image">Delete image</a></li>
+<li><a class="reference internal" href="#id1">Delete file</a></li>
+<li><a class="reference internal" href="#id2">Delete image</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="community.html"
+                        title="previous chapter">Community</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/api/fhy.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="community.html" title="Community"
+             >previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" >API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Kiko Fernandez Reyes.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

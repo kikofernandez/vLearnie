@@ -1,0 +1,82 @@
+{% extends "base_community.html" %}
+
+{% block extra-head %}
+{{ block.super }}
+
+<style type="text/css">
+
+tr.yellow td {
+	border-top: 1px solid #FB7A31;
+	border-bottom: 1px solid #FB7A31;
+	background: #FFC;
+	}
+
+td {
+	border-bottom: 1px solid #CCC;
+	padding: 0.5em 0.5em;
+	}
+	
+td+td {
+	border-left: 1px solid #CCC;
+	text-align: center;
+	}
+</style>
+
+<script type="text/javascript">
+$(function(){
+	$('#enviar').button();
+	$('#enviar').click(function(e){
+		e.preventDefault();
+	    $('#searched-values').html('').load('{% url community_search %}',
+	    									{'value': $('#id_q').val()});
+	});
+});
+</script>
+{% endblock %}
+
+{% block content %}
+	<h2>Communities:</h2>
+	
+	
+	<form method="get" action="">
+		<p>
+			<label for="id_q">Search:</label>
+			<input type="text" name="q" id="id_q" />
+			<input id="enviar" type="submit" value="Look"/>
+		</p>
+	</form>
+	
+	<div class="span-13 last">
+		<div class="margin">
+			<div id="searched-values">
+				<table>
+					<tr class="yellow">
+						<td>Name</td>
+						<td>#Resources</td>
+					</tr>
+					{% for community in object_list %}
+					<tr>
+						<td>
+							<a href="{% url community_archive_index community.slug %}">
+													{{ community.title }}</a>
+						</td>
+						<td>{{community.live_entries}}</td>
+					 </tr>
+					{% endfor %}
+				</table>
+				<p>
+				{% if is_paginated %}
+				Page: {{ page }} of {{ paginator.num_pages }}
+				{% endif %}
+				
+				{% if page_obj.has_previous %}
+				<a href="?page={{ page_obj.previous_page_number }}">Previous page</a>
+				{% endif %}
+				
+				{% if page_obj.has_next %}
+				<a href="?page={{ page_obj.next_page_number }}">Next page</a>
+				{% endif %}</p>
+			</div>
+		</div>
+	</div>
+{% endblock %}

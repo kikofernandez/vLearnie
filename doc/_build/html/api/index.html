@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API Documentation &mdash; vLearnie v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="vLearnie v0.1 documentation" href="../index.html" />
+    <link rel="next" title="Coltrane" href="coltrane.html" />
+    <link rel="prev" title="Community views" href="../community/community_views.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="coltrane.html" title="Coltrane"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../community/community_views.html" title="Community views"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="api-documentation">
+<span id="documentation-api-index"></span><h1>API Documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h1>
+<p>In this section we are going to provide the API documentation for using the RESTful web-services that we have created. In order to do so, we are going to create a basic structure where you can find clearly defined how to call the web-services using, for instance the tool cUrl.</p>
+<div class="section" id="structure">
+<h2>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h2>
+<p>You can find the following parameters in de documentation:</p>
+<p><strong>Arguments</strong>, where you get to know which arguments <strong>must be provided</strong>.</p>
+<p><strong>Return</strong> The value that returns.</p>
+<p><strong>URL</strong> The URL for calling this web service</p>
+<p><strong>Method</strong> Whether the method is GET, POST, PUT or DELETE.</p>
+<p><strong>Example</strong> an example showing how to call the web service</p>
+</div>
+<div class="section" id="applications">
+<span id="api-webservice-application"></span><h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="coltrane.html">Coltrane</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="coltrane.html#get-post-by-author">Get post by author</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coltrane.html#get-post-by-id">Get post by id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coltrane.html#create-entry">Create entry</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coltrane.html#update-entry-by-id">Update entry by id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="coltrane.html#delete-entry-by-id">Delete entry by id</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="community.html">Community</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="community.html#get-communities">Get communities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#create-community">Create community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#update-community">Update community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#delete-community">Delete community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#get-resources-by-community">Get resources by community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#create-resource">Create resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#update-resource">Update resource</a></li>
+<li class="toctree-l2"><a class="reference internal" href="community.html#delete-resource">Delete resource</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="fhy.html">File Handler (FHY)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#consult-files-by-username">Consult files by username</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#consult-images-by-username">Consult images by username</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#consult-by-space">Consult by space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#consult-file-by-id">Consult file by id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#consult-image-by-id">Consult image by id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#create-file">Create file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#create-image">Create image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#update-file">Update file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#update-image">Update image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#delete-file">Delete file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#delete-image">Delete image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#id1">Delete file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fhy.html#id2">Delete image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="spaces.html">Spaces</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="spaces.html#get-user-spaces">Get user spaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spaces.html#create-user-space">Create user space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="spaces.html#update-user-space">Update user space</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="portfolio.html">Portfolio</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#get-portfolio">Get portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#create-portfolio">Create portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#update-portfolio">Update portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#delete-portfolio">Delete portfolio</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#get-studies">Get studies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#add-study">Add study</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#update-studies">Update studies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#delete-study">Delete study</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#get-projects">Get projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#add-project">Add project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#update-project">Update project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#delete-project">Delete project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#get-skills">Get skills</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#add-skill">Add skill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#update-skill">Update skill</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portfolio.html#delete-skill">Delete skill</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">API Documentation</a><ul>
+<li><a class="reference internal" href="#structure">Structure</a></li>
+<li><a class="reference internal" href="#applications">Applications</a><ul>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../community/community_views.html"
+                        title="previous chapter">Community views</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="coltrane.html"
+                        title="next chapter">Coltrane</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/api/index.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="coltrane.html" title="Coltrane"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../community/community_views.html" title="Community views"
+             >previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Kiko Fernandez Reyes.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+{% extends "base_space.html" %}
+
+{% block extra-head %}
+{{ block.super }}
+<style type="text/css">
+
+
+table tr.odd td{
+background: #FFDDCC;
+}
+
+table tr.even td{
+background: white;
+}
+</style>
+  
+<script type="text/javascript">
+$(function(){
+	$('#enviar').button();
+	$('#enviar').click(function(e){
+		e.preventDefault();
+	    $('#searched-values').html('').load('{% url search %}',
+	    									{'type': $('select').val(),
+			    							 'value': $('#id_q').val()});
+	});
+});
+</script>
+{% endblock %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block content %}
+
+<h1>Places:</h1>
+
+<form method="get" action="">
+	<p>
+		<label for="id_q">Search:</label>
+		<input type="text" name="q" id="id_q" />
+		<select>
+			<option>Username</option>
+			<option>Topic</option>
+		</select>
+		<input id="enviar" type="submit" value="Look"/>
+	</p>
+</form>
+
+<div class="span-13 last">
+	<div class="margin">
+		<div id="searched-values"></div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,198 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Spaces &mdash; vLearnie v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="vLearnie v0.1 documentation" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="spaces">
+<h1>Spaces<a class="headerlink" href="#spaces" title="Permalink to this headline">¶</a></h1>
+<p>In this section you can find the methods that we have built in order to provide
+you with a set of web services for creating your own application.</p>
+<div class="section" id="get-user-spaces">
+<h2>Get user spaces<a class="headerlink" href="#get-user-spaces" title="Permalink to this headline">¶</a></h2>
+<p>Consult your own spaces.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, optional argument.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
+  <span class="p">{</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span>
+          <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Kiko&quot;</span><span class="p">,</span>
+          <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Fernandez Reyes&quot;</span>
+      <span class="p">},</span>
+      <span class="s">&quot;slug&quot;</span><span class="p">:</span> <span class="s">&quot;mi-primer-espacio&quot;</span><span class="p">,</span>
+      <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Mi primer espacio&quot;</span>
+  <span class="p">},</span>
+  <span class="o">...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/space/">http://localhost:8000/api/space/</a></p>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/space/'</pre>
+</div>
+</div>
+<div class="section" id="create-user-space">
+<h2>Create user space<a class="headerlink" href="#create-user-space" title="Permalink to this headline">¶</a></h2>
+<p>Create a new space.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>title</strong>, the given title.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span>
+        <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Kiko&quot;</span><span class="p">,</span>
+        <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Fernandez Reyes&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;slug&quot;</span><span class="p">:</span> <span class="s">&quot;mi-primer-espacio&quot;</span><span class="p">,</span>
+    <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Mi primer espacio&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/space/">http://localhost:8000/api/space/</a></p>
+<p><strong>Method</strong> POST</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/space/' -F 'title=LTO' -X POST</pre>
+</div>
+</div>
+<div class="section" id="update-user-space">
+<h2>Update user space<a class="headerlink" href="#update-user-space" title="Permalink to this headline">¶</a></h2>
+<p>Update the given space.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the given user space to change.</li>
+<li><strong>title</strong>, the given title.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s">&quot;user&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;admin&quot;</span><span class="p">,</span>
+        <span class="s">&quot;first_name&quot;</span><span class="p">:</span> <span class="s">&quot;Kiko&quot;</span><span class="p">,</span>
+        <span class="s">&quot;last_name&quot;</span><span class="p">:</span> <span class="s">&quot;Fernandez Reyes&quot;</span>
+    <span class="p">},</span>
+    <span class="s">&quot;slug&quot;</span><span class="p">:</span> <span class="s">&quot;mi-primer-espacio&quot;</span><span class="p">,</span>
+    <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Mi primer espacio&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/space">http://localhost:8000/api/space</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> PUT</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/space/1/' -F 'title=LTO' -X PUT</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Spaces</a><ul>
+<li><a class="reference internal" href="#get-user-spaces">Get user spaces</a></li>
+<li><a class="reference internal" href="#create-user-space">Create user space</a></li>
+<li><a class="reference internal" href="#update-user-space">Update user space</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/api/spaces.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Kiko Fernandez Reyes.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

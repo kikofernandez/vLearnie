@@ -1,0 +1,124 @@
+{% extends "portfolio/base_menu.html" %}
+
+{% block extra-head %}
+{{ block.super }}
+<script type="text/javascript">
+$(function(){
+	$('dt').css({'font-size': '14px',
+		 'margin-left': '20px',
+		 'margin-top': '5px',
+		 'margin-bottom': '5px'
+	});
+	$('dd').css({'border-top': '4px solid red',
+		 'margin-bottom': '10px'});
+	$('.borde').each(function(){
+		$(this).find('dd').hide().end().find('dt').click(function(){
+			$(this).next().slideToggle();
+		});
+		$(this).addClass('ui-corner-all').css({"border": "1px solid grey",
+											   });
+		$(this).find('.details').addClass('ui-corner-all').css({"border": "1px solid grey",
+				"margin-top": '10px',
+		    	"margin-bottom": '10px',
+			    "padding-top": '10px',
+			    "padding-bottom": '10px',
+			    "padding-left": '5px',
+			    "margin-right": '10px'});
+		
+	});
+	$('.borde').css('margin-bottom', '10px');
+	$(".skills").css({'margin-bottom': '5px'})
+	$('.excerpt').css('padding-top', '14px');
+	$('.manage a').button();
+});
+</script>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+	<h3><a href="">Projects</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_create_project %}">Add Project</a><br><br>
+		<a href="{% url space_space_list_spaces %}">Go to Spaces</a>
+	</div>
+	<h3><a href="">Bio</a></h3>
+	<div class="menu-space">
+		{% if bio %}
+		<a href="{% url portfolio_edit_personal %}">Edit Bio</a><br><br>
+		{% else %}
+		<a href="{% url portfolio_create_personal %}">Create Bio</a><br><br>
+		{% endif %}
+		<a href="{% url portfolio_main_personal %}">Manage Bio</a>
+	</div>
+	<h3><a href="">Studies</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_create_studies %}">Add Studies</a><br><br>
+		<a href="{% url portfolio_main_studies %}">Manage Studies</a>
+	</div>
+	<h3><a href="">Skills</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_create_skill %}">Create Skill</a><br><br>
+		<a href="{% url portfolio_main_skill %}">Manage Skills</a>
+	</div>
+	<h3><a href="">Categories</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_create_category %}">Create Category</a><br><br>
+		<a href="{% url portfolio_main_category %}">Manage Categories</a>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+	<h2>Projects</h2>
+	{% with user.project_set.all as projects %}
+		{% if projects %}	
+			{% for project in projects %}
+			<div class="borde">
+				<dt>{{ project.name }}</dt>
+				<dd>
+					<div class="excerpt">
+						{% if project.short_description %}
+							{{ project.short_description_html|truncatewords_html:"50"|safe }}
+						{% else %}
+							{{ project.description_html|truncatewords_html:"50"|safe }}
+						{% endif %}
+					</div>
+					<div class="details">
+						<div class="categories">
+						Category:
+						{% if project.category %}
+							{{ project.category }}
+						{% else %}
+							There are no categories.
+						{% endif %}
+						</div>
+						
+						
+						<div class="skills">
+						Skills:
+						{% with project.skills.all as skills %}
+							{% if project %}
+								{% for skill in skills %}
+									<a href="{% url portfolio_main_skill %}">{{ skill.name }}</a>
+									{% if forloop.last %}{% else %}
+										{% ifequal forloop.revcounter0 1 %}and {% else %},{% endifequal %}
+									{% endif %}
+								{% endfor %}
+							{% else %}
+							    There are no skills.
+							{% endif %}
+						{% endwith %}
+						</div>
+						
+					</div>
+					<div class="manage">
+						<a href="{% url portfolio_edit_project project.id %}">Edit</a>
+						<a href="{% url portfolio_delete_project project.id %}">Delete</a>
+					</div>
+				</dd>
+			</div>
+			{% endfor %}
+		{% endif %}
+	{% endwith %}
+	
+{% endblock %}

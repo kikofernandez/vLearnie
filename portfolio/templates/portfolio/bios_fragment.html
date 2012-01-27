@@ -1,0 +1,52 @@
+{% block extra-head %}
+<style type="text/css">
+#logo img{
+	float: right;
+}
+.study, .additional_info{margin-left:20px;}
+</style>
+
+{% endblock %}
+
+<h2>Bio</h2>
+
+{% include "socialmedia_reference/socialmedia_list.html" %}
+
+
+<div class="bio">
+	{% if bio %}
+		<p><span>Name: </span>{{ bio.last_name}}, {{ bio.first_name }}</p>
+		<p><span>Birthday: </span>{{ bio.birthday|date:"F jS, Y"}}</p>
+		<p><span>Bio:</span></p>
+		{{ bio.bio_html|safe }}
+		
+		
+		{% if studies %}
+		<p><span>Studies</span></p>
+			{% for study in studies %}
+				<div class="borde">
+					<div class="study_id">
+						<p><span>Place:</span> {{ study.place }}</p>
+						<p><span>Title: </span>{{ study.title }}</p>
+						<p><span>From </span>{{ study.start|date:"F jS, Y" }}
+							<span>to</span> {{ study.end|date:"F jS, Y" }}</p>
+						{% if study.speciality %}
+							<span>Speciality:</span>
+							<div class="study">
+							{{ study.speciality_html|safe }}
+							</div>
+						{% endif %}
+						{% if study.additional_info %}
+							<span>Additional Information</span>
+							<div class="additional_info">
+								{{ study.additional_info_html|safe }}
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+		{% endif %}
+	{% else %}
+		<p>The user has not enter a public profile.</p> 
+	{% endif %}
+</div>

@@ -1,0 +1,40 @@
+{% load socialmedia %}
+
+{% get_socialmedia username as socialmedia %}
+
+{% if socialmedia %}
+{% with socialmedia.0 as social %}
+<div id='logo'>
+{% if social.twitter %}
+	<a href="{{ social.twitter }}">
+	<img alt="twitter" title="{{ social.twitter }}"
+							 src="{{ MEDIA_URL}}images/social_logo/twitter.png">
+	</a>
+{% endif %}
+
+{% if social.linkedin %}
+	<a href="{{ social.linkedin }}">
+	<img alt="linkedin" title="{{social.linkedin}}" 
+							src="{{ MEDIA_URL}}images/social_logo/linkedin.png">
+	</a>
+{% endif %}
+
+{% if social.skype %}
+<img alt="{{ social.skype }}" title="{{ social.skype }}"
+								src="{{ MEDIA_URL}}images/social_logo/skype.png">
+{% endif %}
+
+{% if social.facebook %}
+	<a href="{{ social.facebook }}">
+	<img alt="facebook" title="{{ social.facebook }}"
+							 src="{{ MEDIA_URL}}images/social_logo/facebook.png">
+	</a>
+{% endif %}
+</div>
+
+<script type="text/javascript">
+$("#logo img[title]").tooltip();
+</script>
+
+{% endwith %}
+{% endif %}

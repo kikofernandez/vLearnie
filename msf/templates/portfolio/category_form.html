@@ -1,0 +1,66 @@
+{% extends "portfolio/base_menu.html" %}
+
+{% block extra-head %}
+{{ block.super }}
+<script type="text/javascript" src="{{ADMIN_MEDIA_URL}}js/urlify.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("input",".send").button();
+});
+</script>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+<h3><a href="#">Category</a></h3>
+<div class="menu-space">
+	<a href="{% url portfolio_main_category %}">Cancel</a>
+</div>
+</div>
+{% endblock %}
+
+{% block title %}{{block.super}}| {% if add %}Add {% else %}Edit {% endif %}Category{% endblock %}
+
+{% block content %}
+<h3>{% if add %}Add {% else %}Edit {% endif %}Category</h3>
+	<p>Use the form below to create a new entry; all fields are required.</p>
+	<form method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+		<p>{% if form.non_field_errors %}
+				<span class="error">
+					{{ form.non_field_errors }}
+				</span>
+			{% endif %}
+		</p>
+		
+	
+		<p> {% if form.name.errors %}
+		<span class="error">
+			{{ form.name.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_name">Title:</label>
+		{{ form.name }}</p>
+		
+		<p> {% if form.slug.errors %}
+		<span class="error">
+			{{ form.slug.errors|join:", " }}
+		</span>
+			{% endif %}</p>
+		<p><label for="id_slug"></label>
+		{{ form.slug }}</p>
+		
+			<div class="send">
+			<input type="submit" value="Submit">
+			<input type="button" value="Cancel" onclick="redirect()">
+		</div>
+	</form>
+	<script type="text/javascript">
+	document.getElementById("id_name").onkeyup = function() {
+	    var e = document.getElementById("id_slug");
+	    if (!e._changed) { e.value = URLify(document.getElementById("id_name").value, 50); }
+	}
+	function redirect(){
+		window.location.href= "{% url portfolio_main_category %}";
+	}
+	</script>
+{% endblock %}

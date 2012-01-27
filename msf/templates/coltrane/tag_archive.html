@@ -1,0 +1,10 @@
+{% extends "base_tags.html" %}
+
+{% block title %}{{ block.super }} | Latest tags{% endblock %}
+
+{% block content %}
+<h1>Tag index</h1>
+{% for tag in tags %}
+    <h2>{{tag.name}}</h2>
+{% endfor %}
+{% endblock %}

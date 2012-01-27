@@ -1,0 +1,9 @@
+{% block cloud_by_entries %}
+	    {% load coltrane_tags %} 
+        {% tags_cloud_for_model coltrane.Entry username spacename as list step 6 %}
+        
+        <h2>Entries by Tag</h2>
+        {% for x in list %} 
+        <font size={{ x.font_size }}><a href="{% url coltrane_entries_tagged username, spacename, x.id %}">{{ x }}</a></font>
+        {% endfor %}
+{% endblock %}

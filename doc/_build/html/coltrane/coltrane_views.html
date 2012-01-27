@@ -1,0 +1,649 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Coltrane Views &mdash; vLearnie v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="vLearnie v0.1 documentation" href="../index.html" />
+    <link rel="up" title="Coltrane application" href="index.html" />
+    <link rel="next" title="Community application" href="../community/index.html" />
+    <link rel="prev" title="Coltrane application" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../community/index.html" title="Community application"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Coltrane application"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Coltrane application</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="coltrane-views">
+<h1>Coltrane Views<a class="headerlink" href="#coltrane-views" title="Permalink to this headline">¶</a></h1>
+<p id="id1">Here you can take a look at the views that built the Coltrane application. The views in this section will have define a <strong>Type</strong> attribute that can be one of the followings:</p>
+<ul class="simple">
+<li>public, accessible to everyone</li>
+<li>private or internal, accessible only if you are editing your own space</li>
+<li>semi-public, accessible if the user has granted you permission</li>
+</ul>
+<div class="section" id="views">
+<h2>Views:<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h2>
+<p>The following are the views from which this application builds upon:</p>
+<span class="target" id="module-coltrane.views"></span><dl class="function">
+<dt id="coltrane.views.category_detail">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">category_detail</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.category_detail" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view returns a detail view of the category selected. The category is only
+shown. This view is used for people that want to get knowledge of a specific
+category.</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>space_name: string containing the space_name to which belongs this file</li>
+<li>slug: string that contains the slug for the category</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/category_detail.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref docutils literal"><span class="pre">None</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.category_list">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">category_list</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.category_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view returns a list of categories. These categories are only shown
+if the entry to which they belong are marked as live. This view is used
+for people that want to read about the user categories.</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>space_name: string containing the space_name to which belongs this file</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/category_list.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref docutils literal"><span class="pre">None</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.main_area">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">main_area</tt><big>(</big><em>request</em><big>)</big><a class="headerlink" href="#coltrane.views.main_area" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view returns an area where you can look for people spaces</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/main_area.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref docutils literal"><span class="pre">None</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_content_by_space_username">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_content_by_space_username</tt><big>(</big><em>request</em>, <em>username</em>, <em>spacename</em><big>)</big><a class="headerlink" href="#coltrane.views.show_content_by_space_username" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view returns a list of spaces for the specific username.</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>semi-public (requires permission of the user)</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/content_archive_by_space_username.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_entries_by_month">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_entries_by_month</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.show_entries_by_month" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view returns a list of entries by year and month. This list only shows entries that
+have been marked as &#8216;live&#8217;.</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+<li>year: integer for showing the entries in that year</li>
+<li>month: integer for showing the entries in that month</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/entry_archive_month.html</span></tt> (via <tt class="xref py py-func docutils literal"><span class="pre">object_list</span></tt>)</li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_entries_by_year">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_entries_by_year</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.show_entries_by_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view returns a list of entries by year. This list only shows entries that
+have been marked as &#8216;live&#8217;.</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+<li>year: integer for showing the entries in that year</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/entry_archive_year.html</span></tt> (via <tt class="xref py py-func docutils literal"><span class="pre">object_list</span></tt>)</li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_entry_by_day">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_entry_by_day</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.show_entry_by_day" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view returns a list of entries by year, month and day. This list only shows entries that
+have been marked as &#8216;live&#8217;.</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+<li>year: integer for showing the entries in that year</li>
+<li>month: integer for showing the entries in that month</li>
+<li>day: integer for showing the entries in that day</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/entry_archive_day.html</span></tt> (via <tt class="xref py py-func docutils literal"><span class="pre">object_list</span></tt>)</li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_entry_details">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_entry_details</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.show_entry_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view gives you the entry. This list only shows entries that
+have been marked as &#8216;live&#8217;.</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+<li>year: integer for showing the entries in that year</li>
+<li>month: integer for showing the entries in that month</li>
+<li>day: integer for showing the entries in that day</li>
+<li>slug: string which is the slug of the entry</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/entry_detail.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_entry_index">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_entry_index</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.show_entry_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view returns to the index of the user space.</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/entry_archive.html</span></tt> (via <tt class="xref py py-func docutils literal"><span class="pre">object_list</span></tt>)</li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_link_by_day">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_link_by_day</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.show_link_by_day" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view gives you the links by year, month and day</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+<li>year: integer for showing the entries in that year</li>
+<li>month: integer for showing the entries in that month</li>
+<li>day: integer for showing the entries in that day</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/link_archive_day.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_link_details">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_link_details</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.show_link_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view gives you the link details.</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+<li>year: integer for showing the links in that year</li>
+<li>month: integer for showing the links in that month</li>
+<li>day: integer for showing the links in that day</li>
+<li>slug: string which is the slug of the link</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/link_detail.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_link_index">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_link_index</tt><big>(</big><em>request</em>, <em>username</em>, <em>spacename</em><big>)</big><a class="headerlink" href="#coltrane.views.show_link_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view gives you the link index where you have all your links.</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/link_archive.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_links_by_month">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_links_by_month</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.show_links_by_month" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view gives you links by year and month</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+<li>year: integer for showing the links in that year</li>
+<li>month: integer for showing the links in that month</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/link_archive_month.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_links_by_year">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_links_by_year</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.show_links_by_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view gives you the links by year.</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+<li>year: integer for showing the links in that year</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/link_archive_year.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_spaces_by_username">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_spaces_by_username</tt><big>(</big><em>request</em>, <em>username</em><big>)</big><a class="headerlink" href="#coltrane.views.show_spaces_by_username" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view returns a list of spaces for the specific username.</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/space_archive_by_username.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref docutils literal"><span class="pre">None</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_tag_index">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_tag_index</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.show_tag_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view gives you the tags index. The tags are separated for entries and links</p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/tags_by_space.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_tagged_links_object_list">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_tagged_links_object_list</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.show_tagged_links_object_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view gives you the links that have been marked with the <tt class="docutils literal"><span class="pre">tag</span></tt></p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+<li>tag: tag to consult</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/entry_detail.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="coltrane.views.show_tagged_object_list">
+<tt class="descclassname">coltrane.views.</tt><tt class="descname">show_tagged_object_list</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#coltrane.views.show_tagged_object_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view gives you the entries that have been marked with the <tt class="docutils literal"><span class="pre">tag</span></tt></p>
+<dl class="docutils">
+<dt><strong>Type:</strong></dt>
+<dd><ul class="first last simple">
+<li>public</li>
+</ul>
+</dd>
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>username: string containing the username</li>
+<li>spacename: name of the space that you want to watch</li>
+<li>tag: tag to consult</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">coltrane/entries_by_tag.html</span></tt></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd>None</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Coltrane Views</a><ul>
+<li><a class="reference internal" href="#views">Views:</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Coltrane application</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../community/index.html"
+                        title="next chapter">Community application</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/coltrane/coltrane_views.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../community/index.html" title="Community application"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Coltrane application"
+             >previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Coltrane application</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Kiko Fernandez Reyes.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

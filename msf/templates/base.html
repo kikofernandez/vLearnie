@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/media/css/blueprint/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/media/css/blueprint/print.css" type="text/css" media="print">	
+<!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+<title> {% block title %} {% endblock %}</title>
+<script type='text/javascript' src='{{ MEDIA_URL}}js/jquery.js'></script>
+{% block extra-head %}
+{% endblock %}
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+<div class="container">	
+	{% load i18n %}
+	<div class="span-20 push-4 last">
+		<img alt="" src="/media/images/msf_header.jpg">
+	</div>
+	
+	<hr />
+	
+	<div class="span-6">
+		<div class="span-5">
+			<div id="sidebar">
+				{% block menu-group %}
+				{% endblock %}
+			</div>
+		</div>
+		
+		<div class="span-6 last">
+			<div id="second-menu">
+			{% block second-menu %}
+			{% endblock %}
+			</div>
+		</div>
+	</div>
+	
+	<div class="span-16 last">
+		<div id="content">
+			{% block content %}
+			{% endblock %}
+		</div>
+		
+		<div id="recent">
+		{% block recent %}	
+		{% endblock %}
+		</div>
+	
+	</div>
+
+	<!-- 
+	<div class="span-16 last">
+		<div id="whatis">
+		<h2>What is this?</h2>
+		{% block whatis %}
+		
+		{% endblock %}
+		</div>
+	</div>
+	-->
+</div>
+</body>
+</html>

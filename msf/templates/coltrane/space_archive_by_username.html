@@ -1,0 +1,13 @@
+{% extends "base_space.html" %}
+
+{% block title %}{{ block.super }}{% endblock %}
+
+{% block content %}
+<h1>Spaces index</h1>
+
+{% for space in object_list %}
+    <h2>{{space.title}}</h2>
+    <p><a href="{{ space.get_absolute_url }}">Enter to this space</a></p>
+{% endfor %}
+
+{% endblock %}

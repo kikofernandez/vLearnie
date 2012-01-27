@@ -1,0 +1,14 @@
+{% extends "base_links.html" %}
+
+{% block title %}{{ block.super }} | {{year}}{% endblock %}
+
+{% block content %}
+<h1>Links by year</h1>
+<ul>
+    {% for month in date_list %}
+        <li>
+            <a href="{% url coltrane_link_archive_month user, spacename, year,month|date:"b" %}">{{ month|date:"F" }}</a>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

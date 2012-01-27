@@ -1,0 +1,14 @@
+{% extends "base_tags.html" %}
+
+{% block title %}{{ block.super }} | Latest tags{% endblock %}
+  
+{% block content %}
+{% for tag in object_list %}
+    <a href="{% url coltrane_entries_tagged tag.name %}">{{tag.name}}</a>
+{% endfor %}
+
+{% endblock %}
+
+{% block whatis%}
+<p>This is a list of the latest {{ object_list.all.count }} categories published in my blog.</p>
+{% endblock %}

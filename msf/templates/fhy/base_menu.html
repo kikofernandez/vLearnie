@@ -1,0 +1,21 @@
+{% extends "base_admin.html" %}
+
+{% block extra-head %}
+{% include "jquery_definitions.html" %}
+<script src="{{ MEDIA_URL }}js/jquery_right_hand_menu.js"></script>
+{% endblock %}
+
+{% block title %}File Manager{% endblock %}
+
+{% block menu-group %}
+<ul style="list-style-type: none">
+	<li>
+		<img alt="" src="{{MEDIA_URL}}/images/add_folder.png">
+		<a href="{% url fhy_add_folder space.slug idfolder %}">Create new folder</a>
+	</li>
+	<li>
+		<img alt="" src="{{MEDIA_URL}}/images/add_file.png">
+		<a href="{% url fhy_add_file space.slug idfolder %}">Upload file</a>
+	</li>
+</ul>
+{% endblock menu-group %}

@@ -1,0 +1,80 @@
+{% extends "community/base_menu.html" %}
+
+{% load i18n %}
+
+{% block extra-head %}
+  {{ block.super }}
+  <script type="text/javascript">
+  $(function(){
+	  $('dt').css('font-size' ,'14px');
+	  $('.borde').each(function(){
+			$(this).find('dd').hide().end().find('dt').click(function(){
+				$(this).next().slideToggle();
+			});
+			$(this).addClass('ui-corner-all').css({"border": "1px solid grey",
+												   "padding": "5px"})
+	  }).css('margin-bottom', '10px');
+	  
+	  $('dd').css({'border-top': '4px solid red',
+ 		 'margin-bottom': '10px',
+ 		 'padding-top': '10px'});
+
+	  $('dt').css({'font-size': '14px',
+			 'margin-left': '20px',
+			 'margin-top': '5px',
+			 'margin-bottom': '5px'
+	  });
+	  $('.manage a').css('margin-top', '10px').button();
+	  
+  });
+  
+  </script>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+	<h3><a href="#">{% trans "Community" %}</a></h3>
+	<div class="menu-space">
+		<a href="{% url community_community_add_community %}">
+			{% trans "Create new community" %}
+		</a><br><br>
+		<a href="{% url community_resource_create_resource community %}">
+			{% trans "Create new entry" %}
+		</a>
+	</div>
+</div>
+{% endblock menu-group %}
+
+
+{% block content %}
+	<h2>{% trans "Community" %}: {{ community.title|safe }}</h2>
+	<h3>{% trans "Entries" %}:</h3>
+	{% if resources %}
+		{% for resource in resources %}
+		<div class="borde">
+		<dt>{{ resource.title }}, {{resource.pub_date}}</dt>
+		<dd>
+			<div class="excerpt">
+				{% if resource.excerpt %}
+					{{ resource.excerpt|truncatewords_html:"50"|safe }}
+				{% else %}
+					{{ resource.body|truncatewords_html:"50"|safe }}
+				{% endif %}
+			</div>
+			<div class="manage">
+				<a href="{% url community_resource_edit_resource community resource.id %}">
+					{% trans "Edit" %}
+				</a>
+				<a href="{% url community_resource_delete_resource community resource.id %}">
+					{% trans "Delete" %}
+				</a>
+			</div>
+		</dd>
+<!-- <p><a href="{% url community_community_details community resource.pub_date|date:'Y' resource.pub_date|date:'m' resource.pub_date|date:'d' resource.slug %}">
+	 	{{ resource.title }}</a>, {{resource.pub_date|date:"Y"}}<br/> -->
+	 	</div>
+		{% endfor %}
+	{% else %}
+		<p>{% trans "You have no entries in this community" %} </p>
+	{% endif %}
+{% endblock %}

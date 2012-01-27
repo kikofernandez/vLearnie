@@ -1,0 +1,417 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>FHY Views &mdash; vLearnie v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="vLearnie v0.1 documentation" href="../index.html" />
+    <link rel="up" title="FHY application" href="index.html" />
+    <link rel="next" title="Coltrane application" href="../coltrane/index.html" />
+    <link rel="prev" title="FHY: Models" href="fhy_models.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../coltrane/index.html" title="Coltrane application"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="fhy_models.html" title="FHY: Models"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">FHY application</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="fhy-views">
+<h1>FHY Views<a class="headerlink" href="#fhy-views" title="Permalink to this headline">¶</a></h1>
+<p id="id1">Here you can see the views which forms the FHY application. We have divided the views into two, so we have the <a class="reference internal" href="#fhy-views-admin"><em>views for the admin</em></a> and the <a class="reference internal" href="#fhy-views-forms"><em>views for the forms</em></a></p>
+<div class="section" id="views">
+<h2>Views:<a class="headerlink" href="#views" title="Permalink to this headline">¶</a></h2>
+<p>This kind of views were thought for showing content and providing editing options. For instance, you will find functions like <a class="reference internal" href="#fhy.views.admin.show_root_directory" title="fhy.views.admin.show_root_directory"><tt class="xref py py-func docutils literal"><span class="pre">show_root_directory</span></tt></a>. These views are the following ones:</p>
+<span class="target" id="module-fhy.views.admin"><span id="fhy-views-admin"></span></span><dl class="function">
+<dt id="fhy.views.admin.show_folder_content">
+<tt class="descclassname">fhy.views.admin.</tt><tt class="descname">show_folder_content</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#fhy.views.admin.show_folder_content" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the content of the folder. Used after you have accessed at least to one folder.</p>
+<p><strong>Templates:</strong>
+<tt class="docutils literal"><span class="pre">fhy/folder_contents.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+<dt><strong>Context Variables:</strong></dt>
+<dd><ul class="first last simple">
+<li>space: <tt class="xref py py-class docutils literal"><span class="pre">Space</span></tt></li>
+<li>idfolder: Integer (not every Integer is valid, just the one that belongs to the root folder),</li>
+<li>images: [<a class="reference internal" href="fhy_models.html#fhy.models.ImageFHY" title="fhy.models.ImageFHY"><tt class="xref py py-class docutils literal"><span class="pre">ImageFHY</span></tt></a>], where the list is a list with 
+images that belongs to the appropriate <a class="reference internal" href="fhy_models.html#fhy.models.Root" title="fhy.models.Root"><tt class="xref py py-class docutils literal"><span class="pre">root</span></tt></a>,</li>
+<li>files: [<a class="reference internal" href="fhy_models.html#fhy.models.FileFHY" title="fhy.models.FileFHY"><tt class="xref py py-class docutils literal"><span class="pre">FileFHY</span></tt></a>], where the list is a list with 
+files that belongs to the appropriate <a class="reference internal" href="fhy_models.html#fhy.models.Root" title="fhy.models.Root"><tt class="xref py py-class docutils literal"><span class="pre">root</span></tt></a></li>
+<li>folders: [<a class="reference internal" href="fhy_models.html#fhy.models.Folder" title="fhy.models.Folder"><tt class="xref py py-class docutils literal"><span class="pre">Folder</span></tt></a>]</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="fhy.views.admin.show_root_directory">
+<tt class="descclassname">fhy.views.admin.</tt><tt class="descname">show_root_directory</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#fhy.views.admin.show_root_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view shows the main root folder (similar in Linux to /)</p>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">fhy/resources_list.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+<dt><strong>Context-variables:</strong></dt>
+<dd><ul class="first last simple">
+<li>space: <tt class="xref py py-class docutils literal"><span class="pre">Space</span></tt></li>
+<li>idfolder: Integer (not every Integer is valid, just the one that belongs to the root folder),</li>
+<li>images: [<a class="reference internal" href="fhy_models.html#fhy.models.ImageFHY" title="fhy.models.ImageFHY"><tt class="xref py py-class docutils literal"><span class="pre">ImageFHY</span></tt></a>], where the list is a list with 
+images that belongs to the appropriate <a class="reference internal" href="fhy_models.html#fhy.models.Root" title="fhy.models.Root"><tt class="xref py py-class docutils literal"><span class="pre">root</span></tt></a>,</li>
+<li>files: [<a class="reference internal" href="fhy_models.html#fhy.models.FileFHY" title="fhy.models.FileFHY"><tt class="xref py py-class docutils literal"><span class="pre">FileFHY</span></tt></a>], where the list is a list with 
+files that belongs to the appropriate <a class="reference internal" href="fhy_models.html#fhy.models.Root" title="fhy.models.Root"><tt class="xref py py-class docutils literal"><span class="pre">root</span></tt></a></li>
+</ul>
+</dd>
+<dt><strong>Raise:</strong></dt>
+<dd><tt class="xref py py-class docutils literal"><span class="pre">django.http.Http404</span></tt> if no <tt class="xref py py-class docutils literal"><span class="pre">Space</span></tt>
+object exist.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="forms">
+<span id="fhy-views-forms"></span><h2>Forms:<a class="headerlink" href="#forms" title="Permalink to this headline">¶</a></h2>
+<p>These views are those that use a form. It doesn&#8217;t matter whether they use it for creating, editing or deleting an object. These views are the following ones:</p>
+<span class="target" id="module-fhy.views.forms"></span><dl class="function">
+<dt id="fhy.views.forms.add_file">
+<tt class="descclassname">fhy.views.forms.</tt><tt class="descname">add_file</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#fhy.views.forms.add_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will upload a file inside the folder <tt class="docutils literal"><span class="pre">folder</span></tt>.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>space_name: string containing the space_name to which belongs this folder</li>
+<li>folder: integer number that contains the parent folder (dentro de que folder reside)</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Templates:</strong></dt>
+<dd><tt class="docutils literal"><span class="pre">fhy/fhy_file_form.html</span></tt></dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="fhy.views.forms.add_file_in_root">
+<tt class="descclassname">fhy.views.forms.</tt><tt class="descname">add_file_in_root</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#fhy.views.forms.add_file_in_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view will create files in the root directory</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>space_name: string containing the space_name to which belongs this file</li>
+</ul>
+</dd>
+<dt><strong>Template:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">fhy/fhy_file_form.html</span></tt></li>
+<li>Reverse: <cite>fhy_show_root_list</cite></li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="fhy.views.forms.add_folder">
+<tt class="descclassname">fhy.views.forms.</tt><tt class="descname">add_folder</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#fhy.views.forms.add_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new folder inside a previous created folder.</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>space_name: string containing the space_name to which belongs this folder</li>
+<li>folder: integer number that contains who is the parent folder</li>
+</ul>
+</dd>
+<dt><strong>Templates:</strong></dt>
+<dd><tt class="docutils literal"><span class="pre">fhy/fhy_form.html</span></tt></dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="fhy.views.forms.add_folder_in_root">
+<tt class="descclassname">fhy.views.forms.</tt><tt class="descname">add_folder_in_root</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#fhy.views.forms.add_folder_in_root" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view will create folders in the root directory</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong> </dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>space_name: string containing the space_name to which belongs this folder</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">fhy/fhy_form.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="fhy.views.forms.delete_base_folder">
+<tt class="descclassname">fhy.views.forms.</tt><tt class="descname">delete_base_folder</tt><big>(</big><em>space_name</em>, <em>idfolder</em><big>)</big><a class="headerlink" href="#fhy.views.forms.delete_base_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base case for a recursive function, using backtracking.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="fhy.views.forms.delete_file">
+<tt class="descclassname">fhy.views.forms.</tt><tt class="descname">delete_file</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#fhy.views.forms.delete_file" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>space_name: string containing the space_name to which belongs this folder</li>
+<li>idfile: integer number indicating which file must be deleted</li>
+</ul>
+</dd>
+<dt><strong>Templates Reverse:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">fhy_show_root_list</span></tt>: returns to the root folder</li>
+<li><tt class="docutils literal"><span class="pre">fhy_show_folder_content_list</span></tt>: returns to the folder indicated</li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="fhy.views.forms.delete_folder">
+<tt class="descclassname">fhy.views.forms.</tt><tt class="descname">delete_folder</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#fhy.views.forms.delete_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes folders recursively. This means that any other folder /files / images
+inside this folder will be removed</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>space_name: string containing the space_name to which belongs this folder</li>
+<li>idfolder: integer number of the folder to delete</li>
+</ul>
+</dd>
+<dt><strong>Templates Reverse:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">fhy_show_root_list</span></tt>: returns to the root folder</li>
+<li><tt class="docutils literal"><span class="pre">fhy_show_folder_content_list</span></tt>: returns to the folder indicated</li>
+</ul>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="fhy.views.forms.delete_recursive_folder">
+<tt class="descclassname">fhy.views.forms.</tt><tt class="descname">delete_recursive_folder</tt><big>(</big><em>folder_object</em>, <em>space_name</em><big>)</big><a class="headerlink" href="#fhy.views.forms.delete_recursive_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recursive case for a recursive function, using backtracking.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="fhy.views.forms.edit_file">
+<tt class="descclassname">fhy.views.forms.</tt><tt class="descname">edit_file</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#fhy.views.forms.edit_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will allow you to update a file inside the folder <tt class="docutils literal"><span class="pre">folder</span></tt>. It edits 
+also a <tt class="xref py py-class docutils literal"><span class="pre">URLCommunityResource</span></tt> existing
+object.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>space_name: string containing the space_name to which belongs this folder</li>
+<li>idfolder: integer number that contains the parent folder (dentro de que folder reside)</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Templates:</strong></dt>
+<dd><tt class="docutils literal"><span class="pre">fhy/fhy_file_form.html</span></tt></dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="fhy.views.forms.edit_folder">
+<tt class="descclassname">fhy.views.forms.</tt><tt class="descname">edit_folder</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#fhy.views.forms.edit_folder" title="Permalink to this definition">¶</a></dt>
+<dd><p>View that edits an existing folder (no matter whether is a root folder or not).</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>space_name: string containing the space_name to which belongs this folder</li>
+<li>folder: integer number id that points to the folder we want to change</li>
+<li>root: <cite>0</cite> or <cite>1</cite> indicating whether this folder belongs to the root folder</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Templates:</strong></dt>
+<dd><ul class="first simple">
+<li><tt class="docutils literal"><span class="pre">fhy_form.html</span></tt></li>
+</ul>
+<dl class="last docutils">
+<dt><strong>Reverse:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">fhy_show_root_list</span></tt>: returns to the root folder</li>
+<li><tt class="docutils literal"><span class="pre">fhy_show_folder_content_list</span></tt>: returns to the folder indicated</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="fhy.views.forms.edit_image">
+<tt class="descclassname">fhy.views.forms.</tt><tt class="descname">edit_image</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#fhy.views.forms.edit_image" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will allow you to update a file inside the folder <tt class="docutils literal"><span class="pre">folder</span></tt>. It edits 
+also a <tt class="xref py py-class docutils literal"><span class="pre">URLCommunityResource</span></tt> existing
+object.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li>request: Request object</li>
+<li>space_name: string containing the space_name to which belongs this folder</li>
+<li>idfolder: integer number that contains the parent folder (dentro de que folder reside)</li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt><strong>Templates:</strong></dt>
+<dd><tt class="docutils literal"><span class="pre">fhy/fhy_file_form.html</span></tt></dd>
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="fhy.views.forms.handle_uploaded_file">
+<tt class="descclassname">fhy.views.forms.</tt><tt class="descname">handle_uploaded_file</tt><big>(</big><em>f</em><big>)</big><a class="headerlink" href="#fhy.views.forms.handle_uploaded_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function will upload a file</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">FHY Views</a><ul>
+<li><a class="reference internal" href="#views">Views:</a></li>
+<li><a class="reference internal" href="#forms">Forms:</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="fhy_models.html"
+                        title="previous chapter">FHY: Models</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../coltrane/index.html"
+                        title="next chapter">Coltrane application</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/fhy/fhy_views.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../coltrane/index.html" title="Coltrane application"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="fhy_models.html" title="FHY: Models"
+             >previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" >FHY application</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Kiko Fernandez Reyes.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

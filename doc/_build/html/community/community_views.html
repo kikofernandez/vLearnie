@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Community views &mdash; vLearnie v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="vLearnie v0.1 documentation" href="../index.html" />
+    <link rel="up" title="Community application" href="index.html" />
+    <link rel="next" title="API Documentation" href="../api/index.html" />
+    <link rel="prev" title="Community application" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../api/index.html" title="API Documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Community application"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Community application</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="community-views">
+<h1>Community views<a class="headerlink" href="#community-views" title="Permalink to this headline">¶</a></h1>
+<p id="id1">Here you can take a look at the views that builds this application. There will be two different views, the ones that builds the <a class="reference internal" href="#community-views-public"><em>public viewing</em></a> and the one for the <a class="reference internal" href="#community-views-forms"><em>forms</em></a>.</p>
+<div class="section" id="module-community.views.communities">
+<span id="public-views"></span><span id="community-views-public"></span><h2>Public Views:<a class="headerlink" href="#module-community.views.communities" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="community.views.communities.community_index">
+<tt class="descclassname">community.views.communities.</tt><tt class="descname">community_index</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#community.views.communities.community_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list with all the communities</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">request</span></tt></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">community/main_index.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+<dt><strong>Context-variables:</strong></dt>
+<dd><ul class="first last simple">
+<li>communities: list with the created communities</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="community.views.communities.resume_index">
+<tt class="descclassname">community.views.communities.</tt><tt class="descname">resume_index</tt><big>(</big><em>request</em>, <em>community</em><big>)</big><a class="headerlink" href="#community.views.communities.resume_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns to the index of that community</p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">request</span></tt></li>
+<li>community: community to watch</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">community/archive_index.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Context-variables:</strong></dt>
+<dd><ul class="first last simple">
+<li>community: the community object</li>
+<li>resources: list with the resources of the community (entries + urls)</li>
+</ul>
+</dd>
+<dt><strong>Raise:</strong></dt>
+<dd><tt class="xref py py-class docutils literal"><span class="pre">django.http.Http404</span></tt> if no <tt class="xref py py-class docutils literal"><span class="pre">Community</span></tt>
+object exist.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="community.views.communities.show_object_resource_details">
+<tt class="descclassname">community.views.communities.</tt><tt class="descname">show_object_resource_details</tt><big>(</big><em>request</em>, <em>community</em>, <em>year</em>, <em>month</em>, <em>day</em>, <em>slug</em><big>)</big><a class="headerlink" href="#community.views.communities.show_object_resource_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns to the resource especified by <tt class="docutils literal"><span class="pre">year</span></tt>, <tt class="docutils literal"><span class="pre">month</span></tt>, <tt class="docutils literal"><span class="pre">day</span></tt> and <tt class="docutils literal"><span class="pre">slug</span></tt></p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">request</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">community</span></tt>: community to watch</li>
+<li><tt class="docutils literal"><span class="pre">year</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">month</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">day</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">slug</span></tt></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">community/resourcedetail.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Context-variables:</strong></dt>
+<dd><ul class="first last simple">
+<li>object: the community resource</li>
+</ul>
+</dd>
+<dt><strong>Raise:</strong></dt>
+<dd><tt class="xref py py-class docutils literal"><span class="pre">django.http.Http404</span></tt> if no <tt class="xref py py-class docutils literal"><span class="pre">Resource</span></tt>
+object exist.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="community.views.communities.show_resources_by_day">
+<tt class="descclassname">community.views.communities.</tt><tt class="descname">show_resources_by_day</tt><big>(</big><em>request</em>, <em>community</em>, <em>year</em>, <em>month</em>, <em>day</em><big>)</big><a class="headerlink" href="#community.views.communities.show_resources_by_day" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns to the index where you will see only the elements of the 
+corresponding <tt class="docutils literal"><span class="pre">year</span></tt>, <tt class="docutils literal"><span class="pre">month</span></tt>, <tt class="docutils literal"><span class="pre">day</span></tt></p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">request</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">community</span></tt>: community to watch</li>
+<li><tt class="docutils literal"><span class="pre">year</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">month</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">day</span></tt></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">community/resource_archive_day.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Context-variables:</strong></dt>
+<dd><ul class="first last simple">
+<li>community: the community object</li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt>
+<dd>&lt;archive_day <cite>django.views.generic.date_based.archive_day</cite>&gt; view.</dd>
+<dt><strong>Raise:</strong></dt>
+<dd><tt class="xref py py-class docutils literal"><span class="pre">django.http.Http404</span></tt> if no <tt class="xref py py-class docutils literal"><span class="pre">Community</span></tt>
+object exist.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="community.views.communities.show_resources_by_month">
+<tt class="descclassname">community.views.communities.</tt><tt class="descname">show_resources_by_month</tt><big>(</big><em>request</em>, <em>community</em>, <em>year</em>, <em>month</em><big>)</big><a class="headerlink" href="#community.views.communities.show_resources_by_month" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns to the index where you will see only the elements of the 
+corresponding <tt class="docutils literal"><span class="pre">year</span></tt>, <tt class="docutils literal"><span class="pre">month</span></tt></p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">request</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">community</span></tt>: community to watch</li>
+<li><tt class="docutils literal"><span class="pre">year</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">month</span></tt></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">community/resource_archive_month.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Context-variables:</strong></dt>
+<dd><ul class="first last simple">
+<li>community: the community object</li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt>
+<dd>&lt;archive_month <cite>django.views.generic.date_based.archive_month</cite>&gt; view.</dd>
+<dt><strong>Raise:</strong></dt>
+<dd><tt class="xref py py-class docutils literal"><span class="pre">django.http.Http404</span></tt> if no <tt class="xref py py-class docutils literal"><span class="pre">Community</span></tt>
+object exist.</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="community.views.communities.show_resources_by_year">
+<tt class="descclassname">community.views.communities.</tt><tt class="descname">show_resources_by_year</tt><big>(</big><em>request</em>, <em>community</em>, <em>year</em><big>)</big><a class="headerlink" href="#community.views.communities.show_resources_by_year" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns to the index where you will see only the elements of the corresponding <tt class="docutils literal"><span class="pre">year</span></tt></p>
+<dl class="docutils">
+<dt><strong>Arguments:</strong></dt>
+<dd><ul class="first last simple">
+<li><tt class="docutils literal"><span class="pre">request</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">community</span></tt>: community to watch</li>
+<li><tt class="docutils literal"><span class="pre">year</span></tt></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">community/resource_archive_year.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Context-variables:</strong></dt>
+<dd><ul class="first last simple">
+<li>community: the community object</li>
+</ul>
+</dd>
+<dt><strong>Returns:</strong></dt>
+<dd>&lt;archive_year <cite>django.views.generic.date_based.archive_year</cite>&gt; view.</dd>
+<dt><strong>Raise:</strong></dt>
+<dd><tt class="xref py py-class docutils literal"><span class="pre">django.http.Http404</span></tt> if no <tt class="xref py py-class docutils literal"><span class="pre">Community</span></tt>
+object exist.</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-community.views.forms">
+<span id="forms"></span><span id="community-views-forms"></span><h2>Forms:<a class="headerlink" href="#module-community.views.forms" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="community.views.forms.add_community">
+<tt class="descclassname">community.views.forms.</tt><tt class="descname">add_community</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#community.views.forms.add_community" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view creates a community.</p>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">community/community_form.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+<dt><strong>Context-variables:</strong></dt>
+<dd><ul class="first last simple">
+<li>form: the form itself</li>
+<li>add: boolean value that tells the template whether to show <tt class="docutils literal"><span class="pre">add</span></tt> or <tt class="docutils literal"><span class="pre">edit</span></tt></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="community.views.forms.create_resource">
+<tt class="descclassname">community.views.forms.</tt><tt class="descname">create_resource</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#community.views.forms.create_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view creates a new resource / entry.</p>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">community/resource_form.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+<dt><strong>Context-variables:</strong></dt>
+<dd><ul class="first last simple">
+<li>form: the form itself</li>
+<li>add: boolean value that tells the template whether to show <tt class="docutils literal"><span class="pre">add</span></tt> or <tt class="docutils literal"><span class="pre">edit</span></tt></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="community.views.forms.delete_resource">
+<tt class="descclassname">community.views.forms.</tt><tt class="descname">delete_resource</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#community.views.forms.delete_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view deletes an existing resource / entry.</p>
+<dl class="docutils">
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="community.views.forms.edit_resource">
+<tt class="descclassname">community.views.forms.</tt><tt class="descname">edit_resource</tt><big>(</big><em>request</em>, <em>*args</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#community.views.forms.edit_resource" title="Permalink to this definition">¶</a></dt>
+<dd><p>This view edits an existing resource / entry.</p>
+<p><strong>Template:</strong>
+<tt class="docutils literal"><span class="pre">community/resource_form.html</span></tt></p>
+<dl class="docutils">
+<dt><strong>Decorators:</strong></dt>
+<dd><tt class="xref py py-func docutils literal"><span class="pre">django.contrib.auth.decorators.login_required()</span></tt></dd>
+<dt><strong>Context-variables:</strong></dt>
+<dd><ul class="first last simple">
+<li>form: the form itself</li>
+<li>add: boolean value that tells the template whether to show <tt class="docutils literal"><span class="pre">add</span></tt> or <tt class="docutils literal"><span class="pre">edit</span></tt></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Community views</a><ul>
+<li><a class="reference internal" href="#module-community.views.communities">Public Views:</a></li>
+<li><a class="reference internal" href="#module-community.views.forms">Forms:</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Community application</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../api/index.html"
+                        title="next chapter">API Documentation</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/community/community_views.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../api/index.html" title="API Documentation"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Community application"
+             >previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" >Community application</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Kiko Fernandez Reyes.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+{% extends "base_links.html" %}
+
+{% block title %}{{ block.super }} | {{month|date:"F, Y"}}{% endblock %}
+
+{% block content %}
+	<h1>Links by month</h1>
+    {% for link in object_list %}
+        <a href="{{ link.get_absolute_url }}">{{ link.title }}</a>, {{ link.pub_date|date:"F j, Y"}}
+        <p>{{ link.description_body|truncatewords_html:"50"|safe}}
+        </p>
+    {% endfor %}
+
+{% endblock %}

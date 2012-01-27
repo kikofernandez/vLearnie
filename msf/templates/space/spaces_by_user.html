@@ -1,0 +1,41 @@
+{% extends "space/menu_space.html" %}
+
+{% block title %}
+Spaces of {{user.username}}
+{% endblock %}
+
+
+
+{% block menu-group %}
+{{block.super}}
+<script type="text/javascript">
+$(function(){
+	$('.space_class').addClass('ui-corner-all').css({"border": "1px solid rgb(000, 000, 051)",
+		   "padding": "5px", "margin-bottom": '10px'
+		   });
+	$('a', '.edit').button();
+});
+</script>
+
+{% endblock %}
+
+{% block content %}
+		<h1>Spaces of {{ user.username }}</h1>
+
+<h2>Spaces:</h2>
+<div class="span-8 last">
+	{% for space in object_list %}
+		<div class="space_class">
+			<div class="span-5 last">
+				<div class="titulo">
+				<a href="{% url space_space_list_objects space.slug %}">{{ space.title }}</a>
+				</div>
+			</div>	
+			<div class="edit">
+				<a href="{% url space_space_edit_space space.id %}">Edit</a>
+			</div>
+		</div>
+		
+	{% endfor %}
+</div>
+{% endblock %}

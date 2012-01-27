@@ -1,0 +1,11 @@
+{% extends "space/base_menu.html" %}
+
+
+{% block menu-group %}
+<div id="accordion">
+<h3><a href="#">Space</a></h3>
+<div class="menu-space">
+<a href="{% url space_space_create_space %}">Add space</a>
+</div>
+</div>
+{% endblock %}

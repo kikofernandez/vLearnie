@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Community &mdash; vLearnie v0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="vLearnie v0.1 documentation" href="../index.html" />
+    <link rel="up" title="API Documentation" href="index.html" />
+    <link rel="next" title="File Handler (FHY)" href="fhy.html" />
+    <link rel="prev" title="Coltrane" href="coltrane.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="fhy.html" title="File Handler (FHY)"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="coltrane.html" title="Coltrane"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="community">
+<h1>Community<a class="headerlink" href="#community" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="get-communities">
+<h2>Get communities<a class="headerlink" href="#get-communities" title="Permalink to this headline">¶</a></h2>
+<p>Get the list of communities.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, <strong>optional</strong> argument for getting the information for a specific community.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
+  <span class="p">{</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+      <span class="s">&quot;excerpt&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+      <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="s">&quot;Comunidad donde poder extender el contenido de LTO&quot;</span><span class="p">,</span>
+      <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;LTO&quot;</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+      <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+      <span class="s">&quot;excerpt&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+      <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">,</span>
+      <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Introduccion al uso de comunidades&quot;</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/community/">http://localhost:8000/api/community/</a></p>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/community/'</pre>
+</div>
+</div>
+<div class="section" id="create-community">
+<h2>Create community<a class="headerlink" href="#create-community" title="Permalink to this headline">¶</a></h2>
+<p>Create a new community.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>title</strong>, the title of the community.</li>
+<li><strong>excerpt</strong>, a brief description of the topic.</li>
+<li><strong>description</strong>, the description for the community.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s">&quot;excerpt&quot;</span><span class="p">:</span> <span class="s">&quot;Pruebas&quot;</span><span class="p">,</span>
+  <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="s">&quot;Vamos a realizar unas pruebas&quot;</span><span class="p">,</span>
+  <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Pruebas&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/community/">http://localhost:8000/api/community/</a></p>
+<p><strong>Method</strong> POST</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/community/' -F 'title=Pruebas' -F 'excerpt=Pruebas' -F 'description=Vamos a realizar una pruebas' -X POST</pre>
+</div>
+</div>
+<div class="section" id="update-community">
+<h2>Update community<a class="headerlink" href="#update-community" title="Permalink to this headline">¶</a></h2>
+<p>Updates the given community.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the id of the community to change.</li>
+<li><strong>title</strong>, the title of the community (<strong>optional</strong>).</li>
+<li><strong>excerpt</strong>, a brief description of the topic (<strong>optional</strong>).</li>
+<li><strong>description</strong>, the description for the community (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s">&quot;excerpt&quot;</span><span class="p">:</span> <span class="s">&quot;Pruebas&quot;</span><span class="p">,</span>
+  <span class="s">&quot;description&quot;</span><span class="p">:</span> <span class="s">&quot;Vamos a realizar unas pruebas&quot;</span><span class="p">,</span>
+  <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Pruebas&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/community">http://localhost:8000/api/community</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> PUT</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/community/5/' -F 'title=Pruebas' -X PUT</pre>
+</div>
+</div>
+<div class="section" id="delete-community">
+<h2>Delete community<a class="headerlink" href="#delete-community" title="Permalink to this headline">¶</a></h2>
+<p>Delete the given community.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the id of the community to delete.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong> <a class="reference external" href="http://localhost:8000/api/community">http://localhost:8000/api/community</a>/&lt;id&gt;/</p>
+<p><strong>Method</strong> DELETE</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/community/'5/ -X DELETE</pre>
+</div>
+</div>
+<div class="section" id="get-resources-by-community">
+<h2>Get resources by community<a class="headerlink" href="#get-resources-by-community" title="Permalink to this headline">¶</a></h2>
+<p>Get the resources based on the community id.</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the id of the community to explore.</li>
+<li><strong>resource_id</strong>, the id of the resource (<strong>optional</strong>).</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><pre>[
+  {
+      "author": {
+          "username": "admin"
+      },
+      "tags": "jajaja",
+      "excerpt": "Explicacion de como instalar Maven para Eclipse",
+      "body_html": "En esta entrada vamos a comentar como podemos hacer uso de Maven para Eclipse gracias a un plugin llamado M2E. Gracias a este podemos bajarnos las librerias que nos hagan falta de forma sencilla y rapida.Procedemos con la explicacion:",
+      "community": {
+          "title": "LTO"
+      },
+      "title": "Maven para eclipse",
+      "pub_date": "2011-05-11",
+      "id": 1
+  },
+  {
+    ...
+  }
+]</pre>
+</div>
+<p><strong>URL</strong>:</p>
+<div class="highlight-python"><pre>http://localhost:8000/api/community/&lt;id&gt;/resources/
+
+http://localhost:8000/api/community/&lt;id&gt;/resources/&lt;resource_id&gt;/</pre>
+</div>
+<p><strong>Method</strong> GET</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/community/1/resources/</pre>
+</div>
+</div>
+<div class="section" id="create-resource">
+<h2>Create resource<a class="headerlink" href="#create-resource" title="Permalink to this headline">¶</a></h2>
+<p>Create a new resource</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last">
+<li><p class="first"><strong>community</strong>, the id of the community.</p>
+</li>
+<li><p class="first"><strong>title</strong>, the title of the resource.</p>
+</li>
+<li><p class="first"><strong>excerpt</strong>, a brief description.</p>
+</li>
+<li><p class="first"><strong>body</strong>, the content of the resource.</p>
+</li>
+<li><p class="first"><strong>tags</strong>, the tags.</p>
+</li>
+<li><p class="first"><strong>pub_date</strong>, the publication date of the resource (format: YYYY-MM-DD)</p>
+</li>
+<li><p class="first"><strong>type</strong>, where it is a natural number with the following relation:</p>
+<div class="highlight-python"><pre>1: LIVE, the resource is public
+2: DRAFT, the resource is a draft and therefore, won't be public
+3: HIDDEN, the resource is hidden, which means not public.</pre>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;body&quot;</span><span class="p">:</span> <span class="s">&quot;mas pruebas&quot;</span><span class="p">,</span>
+  <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="s">&quot;jaja&quot;</span><span class="p">,</span>
+  <span class="s">&quot;author&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;admin&quot;</span>
+  <span class="p">},</span>
+  <span class="s">&quot;excerpt&quot;</span><span class="p">:</span> <span class="s">&quot;nada&quot;</span><span class="p">,</span>
+  <span class="s">&quot;community&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;LTO&quot;</span>
+  <span class="p">},</span>
+  <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Pruebas&quot;</span><span class="p">,</span>
+  <span class="s">&quot;pub_date&quot;</span><span class="p">:</span> <span class="s">&quot;2011-12-07&quot;</span><span class="p">,</span>
+  <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">11</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong>:</p>
+<div class="highlight-python"><pre>http://localhost:8000/api/community/resource/</pre>
+</div>
+<p><strong>Method</strong> POST</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/community/resource/' -F 'community=1' -F 'title=Pruebas' -F 'body=mas pruebas' -F 'pub_date=2011-12-07' -F 'type=1' -F 'tags=jaja' -F 'excerpt=nada' -X POST</pre>
+</div>
+</div>
+<div class="section" id="update-resource">
+<h2>Update resource<a class="headerlink" href="#update-resource" title="Permalink to this headline">¶</a></h2>
+<p>Update the given resource</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last">
+<li><p class="first"><strong>title</strong>, the title of the resource (<strong>optional</strong>).</p>
+</li>
+<li><p class="first"><strong>excerpt</strong>, a brief description (<strong>optional</strong>).</p>
+</li>
+<li><p class="first"><strong>body</strong>, the content of the resource (<strong>optional</strong>).</p>
+</li>
+<li><p class="first"><strong>tags</strong>, the tags (<strong>optional</strong>).</p>
+</li>
+<li><p class="first"><strong>pub_date</strong>, the publication date of the resource (format: YYYY-MM-DD) (<strong>optional</strong>).</p>
+</li>
+<li><p class="first"><strong>type</strong>, (<strong>optional</strong>) where it is a natural number with the following relation:</p>
+<div class="highlight-python"><pre>1: LIVE, the resource is public
+2: DRAFT, the resource is a draft and therefore, won't be public
+3: HIDDEN, the resource is hidden, which means not public.</pre>
+</div>
+</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;body&quot;</span><span class="p">:</span> <span class="s">&quot;mas pruebas&quot;</span><span class="p">,</span>
+  <span class="s">&quot;tags&quot;</span><span class="p">:</span> <span class="s">&quot;jaja&quot;</span><span class="p">,</span>
+  <span class="s">&quot;author&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;username&quot;</span><span class="p">:</span> <span class="s">&quot;admin&quot;</span>
+  <span class="p">},</span>
+  <span class="s">&quot;excerpt&quot;</span><span class="p">:</span> <span class="s">&quot;nada&quot;</span><span class="p">,</span>
+  <span class="s">&quot;community&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;LTO&quot;</span>
+  <span class="p">},</span>
+  <span class="s">&quot;title&quot;</span><span class="p">:</span> <span class="s">&quot;Pruebas&quot;</span><span class="p">,</span>
+  <span class="s">&quot;pub_date&quot;</span><span class="p">:</span> <span class="s">&quot;2011-12-07&quot;</span><span class="p">,</span>
+  <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">11</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>URL</strong>:</p>
+<div class="highlight-python"><pre>http://localhost:8000/api/community/resource/&lt;id&gt;/</pre>
+</div>
+<p><strong>Method</strong> PUT</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/community/resource/11/' -F 'title=Pruebas' -X PUT</pre>
+</div>
+</div>
+<div class="section" id="delete-resource">
+<h2>Delete resource<a class="headerlink" href="#delete-resource" title="Permalink to this headline">¶</a></h2>
+<p>Delete the given resource</p>
+<dl class="docutils">
+<dt><strong>Arguments</strong>:</dt>
+<dd><ul class="first last simple">
+<li><strong>id</strong>, the id of the resource.</li>
+</ul>
+</dd>
+</dl>
+<p><strong>Return</strong> True</p>
+<p><strong>URL</strong>:</p>
+<div class="highlight-python"><pre>http://localhost:8000/api/community/resource/&lt;id&gt;/</pre>
+</div>
+<p><strong>Method</strong> DELETE</p>
+<p><strong>Example</strong>:</p>
+<div class="highlight-python"><pre>curl -u admin:1234 'http://localhost:8000/api/community/resource/11/' -X DELETE</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Community</a><ul>
+<li><a class="reference internal" href="#get-communities">Get communities</a></li>
+<li><a class="reference internal" href="#create-community">Create community</a></li>
+<li><a class="reference internal" href="#update-community">Update community</a></li>
+<li><a class="reference internal" href="#delete-community">Delete community</a></li>
+<li><a class="reference internal" href="#get-resources-by-community">Get resources by community</a></li>
+<li><a class="reference internal" href="#create-resource">Create resource</a></li>
+<li><a class="reference internal" href="#update-resource">Update resource</a></li>
+<li><a class="reference internal" href="#delete-resource">Delete resource</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="coltrane.html"
+                        title="previous chapter">Coltrane</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="fhy.html"
+                        title="next chapter">File Handler (FHY)</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/api/community.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="fhy.html" title="File Handler (FHY)"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="coltrane.html" title="Coltrane"
+             >previous</a> |</li>
+        <li><a href="../index.html">vLearnie v0.1 documentation</a> &raquo;</li>
+          <li><a href="index.html" >API Documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Kiko Fernandez Reyes.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

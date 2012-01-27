@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title> {% block title %} {% endblock %}</title>
+
+<link rel="stylesheet" href="/media/css/blueprint/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/media/css/blueprint/print.css" type="text/css" media="print">	
+<!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+<!-- 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+ -->
+<script type='text/javascript' src='{{ MEDIA_URL}}js/jquery.js'></script>
+
+{% block extra-head %}{% endblock %}
+
+<script type='text/javascript' src='{{ MEDIA_URL}}js/jquery.jqDock.min.js'></script>
+<style type='text/css'>
+    /*position and hide the menu initially - leave room for the menu to expand...*/
+    #description {margin-left:150px; width:510px;}
+    #page {padding:20px 0; width:100%;}
+    /* #menus {position:absolute; top:0; left:0; display:none;} */ 
+    #menus {position:fixed; top:70px; left:4px; display:none;}
+    /*#menu {position:absolute; top:0; left:0; display:none;} */
+    #menus img {padding:5px;}
+/*dock styling...*/
+    /*...set the cursor...*/
+    #menus div.jqDock {cursor:pointer;} 
+    div.jqDockLabel {font-weight:bold; font-style:italic; white-space:nowrap; color:#000000; cursor:pointer;}
+</style>
+<script type='text/javascript'>
+$(document).ready(function(){
+    // set up the options to be used for jqDock...
+    var dockOptions =
+        { align: 'left' // vertical menu, with expansion RIGHT from a fixed LEFT edge
+        , size: 60  // set the maximum minor axis (horizontal) image dimension to 60px
+        , fadeIn: 2000
+        //, labels: 'br'
+        };
+    // ...and apply...
+    $('#menus').jqDock(dockOptions);
+});
+</script>
+</head>
+<body class="{% block bodyclass %}{% endblock %}">
+
+
+<div class="container">	
+	{% load i18n %}
+	<div class="span-20 push-4 last">
+		<img alt="" src="/media/images/msf_header.jpg">
+	</div>
+	
+	<hr />
+
+	
+    <div class="span-2 pull-1 last">
+    	<div id='page'>
+    	<div id="menus">
+    		<a href="{% url logout %}"><img src="{{ MEDIA_URL}}/images/logout.png" title="logout" alt=''></a>
+	        <a href="{% url redirecto_moodle %}"><img src='{{ MEDIA_URL }}/images/moodle.png' title='Moodle' alt='' /></a>
+	        <!-- 
+	        <a href="#"><img src='{{ MEDIA_URL }}/images/profile.png' title='Favourites' alt='' /></a>
+	         -->
+	        <a href="{% url friendy_show_main_friendylist %}"><img src='{{ MEDIA_URL }}/images/permission2.png' title='Permission' alt='' /></a>
+	        {% if space %}
+	        <a href="{% url fhy_show_root_list space.slug %}"><img src='{{ MEDIA_URL }}/images/folder.png' title='Folders' alt='' /> </a>
+	        {% endif %}
+	        <a href="{% url space_space_list_spaces %}"><img src='{{ MEDIA_URL }}/images/personal.png' title='Personal Space' alt='' /></a>
+	        <a href="{% url community_index_communities %}"><img src='{{ MEDIA_URL }}/images/w2.png' title='Community' alt='' /></a>
+        </div>
+        </div>
+    </div>
+    
+
+
+	<!-- <div class="span-4 pull-2 colborder"> -->
+	<div class="span-5 colborder">
+		<div class="span-5">
+			
+			<div id="sidebar">
+				<h2>Navigation:</h2>
+				{% block menu-group %}
+				{% endblock %}
+			</div>
+		</div>
+		
+		<div class="span-4 last">
+			<div id="second-menu">
+			{% block second-menu %}
+			{% endblock %}
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- <div class="span-16 last"> -->
+	<div class="span-16 last">
+		<div id="content">
+			{% block content %}
+			{% endblock %}
+		</div>
+		
+		<div id="recent">
+		{% block recent %}	
+		{% endblock %}
+		</div>
+	</div>
+	
+	<hr />
+	<!-- 
+	<div class="span-16 last">
+	<div id="whatis">
+	<h2>What is this?</h2>
+	{% block whatis %}
+	
+	{% endblock %}
+	</div>
+	</div>
+	 -->
+	
+</div>
+</body>
+</html>

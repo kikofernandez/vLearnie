@@ -1,0 +1,7 @@
+{% extends "base_community.html" %}
+
+{% block content %}
+{% for month in date_list %}
+	<a href="{% url community_community_archive_month community, year, month|date:"m" %}">{{month|date:"F"}}</a>
+{% endfor %}
+{% endblock content %}

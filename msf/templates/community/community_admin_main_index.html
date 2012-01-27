@@ -1,0 +1,58 @@
+{% extends "community/base_menu.html" %}
+
+{% block extra-head %}
+  {{ block.super }}
+  <script type="text/javascript">
+  $(function(){
+	  $('dt').css('font-size' ,'14px');
+	  $('.borde').each(function(){
+			$(this).find('dd').hide().end().find('dt').click(function(){
+				$(this).next().slideToggle();
+			});
+			$(this).addClass('ui-corner-all').css({"border": "1px solid grey",
+												   "padding": "5px"})
+	  }).css('margin-bottom', '10px');
+	  $('dd').css({'border-top': '4px solid red',
+ 		 'margin-bottom': '10px',
+ 		 'padding-top': '10px'});
+
+	  $('dt').css({'font-size': '14px',
+			 'margin-left': '20px',
+			 'margin-top': '5px',
+			 'margin-bottom': '5px'
+	  });
+	  $('.manage a').css('margin-top', '10px').button();
+  });
+  
+  </script>
+{% endblock %}
+
+{% block content %}
+<h2>Communities:</h2>
+  {% if communities %}
+	  {% for community in communities %}
+	  <div class="borde">
+	      <dt><a href="{% url community_community_admin_index community.slug %}">
+	      		{{ community.title }}</a>
+	      </dt>
+	      <dd>
+	      	<div class="excerpt">
+		      {% if community.excerpt %}
+		          {{ community.excerpt_html|truncatewords_html:"50"|safe }}
+		      {% else %}
+		          {{ community.description_html|truncatewords_html:"50"|safe }}
+		      {% endif %}
+	      	</div>
+	      	
+	      	<div class="manage">
+	      		<a href="{% url community_resource_create_resource community.slug %}">Add entry</a>
+	      		<a href="{% url community_community_admin_index community.slug %}">Enter to the community</a>
+	      	</div>
+	      </dd>
+	  </div>
+	  {% endfor %}
+  {% else %}
+  	<p>There are no communities yet.</p>
+  {% endif %}
+  
+{% endblock %}

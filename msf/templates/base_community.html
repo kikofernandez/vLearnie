@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}| Communities{% endblock %}
+{% block bodyclass %}communities{% endblock %}
+
+{% block extra-head %}
+{% include "jquery_definitions.html" %}
+<script src="{{ MEDIA_URL }}js/jquery_right_hand_menu.js"></script>
+{% endblock %}
+
+{% block menu-group %}
+<h2>Navigation</h2>
+<div id="accordion">
+	<h3><a href="#">Communities</a></h3>
+	<div class="menu-space">
+		<a href="{% url community_public_list_communities %}">Community index</a><br>
+	</div>
+	
+	<h3><a href="">Spaces</a></h3>
+	<div class="menu-space">
+		<a href="{% url space_space_main_area %}">Spaces index</a>
+	</div>
+</div>
+{% endblock %}

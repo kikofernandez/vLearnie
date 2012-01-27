@@ -1,0 +1,93 @@
+{% extends "friendycontrol/base_menu.html" %}
+ 
+{% block title %} Control manager {% if add %}
+												Add
+											 {% else %}
+											    Edit
+											 {% endif %} Composition
+{% endblock %}
+
+{% block extra-head %}
+{{ block.super }}
+<script type="text/javascript">
+$(function(){
+	$("input",".send").button();
+});
+</script>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+<h3><a href="#">Control Manager</a></h3>
+<div class="menu-space">
+	<a href="{% url friendy_show_main_compositions %}">Cancel</a>
+</div>
+</div>
+{% endblock %}
+
+{% block content %}
+	<h3>{% if add %}Add {% else %}Edit {% endif %}Composition</h3>
+	<p>Use the form below to create a new link; all fields are required.</p>
+	
+	<form method='post' action=''>{% csrf_token %}
+	<p>{% if form_composition.non_field_errors %}
+				<span class="error">
+					{{ form_composition.non_field_errors }}
+				</span>
+			{% endif %}
+		</p>
+	<p>{% if form_readable.non_field_errors %}
+				<span class="error">
+					{{ form_readable.non_field_errors }}
+				</span>
+			{% endif %}
+		</p>
+		
+		
+		<p> {% if form_composition.name.errors %}
+		<span class "error">
+			{{ form_composition.name.errors|join:", "}}
+		</span>
+			{% endif%}
+		</p>
+		<p><label for="id_name">Name:</label>
+		{{ form_composition.name }}
+		</p>
+		
+		
+		<p> {% if form_composition.composition_list.errors %}
+		<span class="error">
+			{{ form_composition.composition_list.errors|join:", " }}
+		</span>
+			{% endif %}
+		<label for="id_composition_list">Compositional list:</label><br>
+		{{ form_composition.composition_list }}</p>
+		
+		<p> {% if form_readable.read.errors %}
+		<span class "error">
+			{{ form_readable.read.errors|join:", "}}
+		</span>
+			{% endif%}
+		</p>
+		<p><label for="id_read">Give them read permission?</label>
+		{{ form_readable.read }}
+		</p>
+		
+		
+		<p> {% if form_composition.spaces.errors %}
+		<span class "error">
+			{{ form_composition.spaces.errors|join:", "}}
+		</span>
+			{% endif%}
+		</p>
+		<p><label for="id_spaces">Permissions</label><br>
+		{{ form_composition.spaces }}
+		</p>
+		
+		<div class="send">
+			<input type='submit'>
+			<input type='button' value="Cancel" 
+				onclick="window.location.href='{% url friendy_show_main_compositions %}'">
+		</div>
+	</form>
+{% endblock content %}

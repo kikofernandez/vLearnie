@@ -1,0 +1,126 @@
+{% extends "portfolio/base_menu.html" %}
+
+{% block extra-head %}
+{{ block.super }}
+<script type="text/javascript">
+$(function(){
+	$('.borde').css('margin-bottom', '10px');
+	$('.manage a').button();
+	$('.borde').each(function(){
+		$(this).addClass('ui-corner-all').css({"border": "1px solid grey",
+			"margin-top": '10px',
+	    	"margin-bottom": '10px',
+		    "padding-top": '10px',
+		    "padding-bottom": '10px',
+		    "padding-left": '5px',
+		    "margin-right": '10px'});
+	});
+});
+</script>
+
+<style type="text/css">
+.manage{position: relative; top: -7px; float: right}
+.social{ float:right; position: relative; bottom: 50px; right: 20px;}
+#user_bio{ padding-left: 10px; padding-right: 10px;}
+</style>
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+	<h3><a href="">Bio</a></h3>
+	<div class="menu-space">
+		{% if bio %}
+		<a href="{% url portfolio_edit_personal %}">Edit Bio</a><br><br>
+		<a href="{% url portfolio_delete_personal %}">Delete Bio</a><br><br>
+		{% else %}
+		<a href="{% url portfolio_create_personal %}">Create Bio</a><br><br>
+		{% endif %}
+		<a href="{% url portfolio_manage_portfolio %}">Go to Portfolio</a><br><br>
+		<a href="{% url space_space_list_spaces %}">Go to Spaces</a>
+	</div>
+	
+	<h3><a href="">Studies</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_create_studies %}">Add Studies</a><br><br>
+		<a href="{% url portfolio_main_studies %}">Manage Studies</a><br><br>
+	</div>
+	<h3><a href="">Projects</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_create_project %}">Create Project</a><br><br>
+		<a href="{% url portfolio_manage_portfolio %}">Manage Projects</a>
+	</div>
+	<h3><a href="">Skills</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_create_skill %}">Create Skill</a><br><br>
+		<a href="{% url portfolio_main_skill %}">Manage Skills</a>
+	</div>
+	<h3><a href="">Categories</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_create_category %}">Create Category</a><br><br>
+		<a href="{% url portfolio_main_category %}">Manage Categories</a>
+	</div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+	<h2>Personal Information</h2>
+		
+	<div class="span-16 last">
+	{% if bio %}
+		<div class="span-7 append-9">
+			<div class="borde">
+				<span class="position">
+					<span class="bio">
+						<div id="user_info">{{ bio.last_name }}, {{ bio.first_name }}</div>
+						<div id="birthday"> {{ bio.birthday|date:"F jS, Y" }}</div>
+					</span>
+				</span>
+			</div>
+		</div>
+		
+		<span class="social">
+			{% if social %}
+				{% if social.twitter %}
+				<img alt="" src="{{ MEDIA_URL }}/images/social_logo/twitter.png">
+				{% endif %}
+				
+				{% if social.linkedin %}
+				<img alt="" src="{{ MEDIA_URL }}/images/social_logo/linkedin.png">
+				{% endif %}
+				
+				{% if social.skype %}
+				<img alt="" src="{{ MEDIA_URL }}/images/social_logo/skype.png">
+				{% endif %}
+				
+				{% if social.facebook %}
+				<img alt="" src="{{ MEDIA_URL }}/images/social_logo/facebook.png">
+				{% endif %}
+		    {% endif %}
+		</span>
+		
+		<div class="borde">
+			<div id="user_bio">
+			<h3>Bio:</h3>
+			{{ bio.bio_html|safe }}
+			</div>
+		</div>
+		
+		
+		
+		<span class="manage">
+			<a href="{% url portfolio_edit_personal %}">Edit</a>
+			<a href="{% url portfolio_delete_personal %}">Delete</a>
+		</span>
+	{% else %}
+	<div class="span-7 append-9 last">
+		<span class="bio">
+			<div id="user_info">There's no information.</div>
+		</span>
+	</div>
+		<span class="manage">
+		<a href="{% url portfolio_create_personal %}">Add Personal Information</a>
+		</span>
+	{% endif %}
+	</div>
+{% endblock %}

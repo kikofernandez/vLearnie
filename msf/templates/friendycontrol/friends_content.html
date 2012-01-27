@@ -1,0 +1,58 @@
+{% extends "friendycontrol/base_menu.html" %}
+
+{% block extra-head %}
+{{ block.super }}
+<script type="text/javascript">
+$(function(){
+	$('dt').css({'font-size':'14px', 'padding-left':'20px'});
+	$('dd').css({'border-top': '4px solid red',
+		 'margin-bottom': '10px'});
+	$('.borde').each(function(){
+		$(this).find('dd').hide().end().find('dt').click(function(){
+			$(this).next().slideToggle();
+		});
+		$(this).addClass('ui-corner-all').css({"border": "1px solid grey",
+											   "padding": "5px"});
+		$(this).find('.manage').css({"margin-top": "10px", "margin-bottom": '10px'});
+		$(this).css('margin-bottom', '10px');
+	});
+	$('.manage a').button();
+});
+</script>
+{% endblock %}
+{% block title %}Friends{% endblock %}
+{% block menu-group %}
+<div id="accordion">
+	<h3><a href="#">Control Manager</a></h3>
+	<div class="menu-space">
+		<a href="{% url friendy_add_friend %}">Add friend</a><br><br>
+		<a href="{% url friendy_show_main_friendylist %}">Friendlist</a><br><br>
+		<a href="{% url friendy_show_main_compositions %}">Permission</a><br><br>
+		<a href="{% url friendy_show_main_friendylist %}">Main area</a>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+	<h2>Friends:</h2>
+	{% for list_name in object_list %}
+	<div class="borde">
+	    <dt>{{ list_name.friend }}</dt>
+	    <dd> 
+	    	<span class="list">
+	    	Lists:
+	    	{% for x in list_name.group_list.all %}
+	    		<a href="{% url friendy_edit_friendlist x.id %}">{{x.group_name}}</a>
+	    		{% if forloop.last %}{% else %}
+	    			{% ifequal forloop.revcounter0 1 %}and {% else %}, {% endifequal%}
+	    		{% endif %}
+	    	{% endfor %}
+	    	</span>
+		    <div class="manage">
+		    	<a href="{% url friendy_edit_friend list_name.id %}">Edit </a>
+		    	<a href="{% url friendy_delete_friend list_name.id %}">Delete</a>
+		    </div>
+	    </dd>
+	</div>
+	{% endfor %}
+{% endblock content %}

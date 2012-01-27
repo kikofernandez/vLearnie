@@ -1,0 +1,13 @@
+FriendyControl application
+======================
+
+H2 -- Views
+=============
+.. automodule:: friendycontrol.views
+   :members:
+
+.. include global.rst
+H2 -- Models
+==============
+.. automodule:: friendycontrol.models
+   :members:

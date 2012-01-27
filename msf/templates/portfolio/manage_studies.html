@@ -1,0 +1,101 @@
+{% extends "portfolio/base_menu.html" %}
+
+{% block extra-head %}
+{{ block.super }}
+<script type="text/javascript">
+$(function(){
+	$('.borde').css('margin-bottom', '10px');
+	$('.manage a').button();
+	$('.borde').each(function(){
+		$(this).addClass('ui-corner-all').css({"border": "1px solid grey",
+			"margin-top": '10px',
+	    	"margin-bottom": '10px',
+		    "padding-top": '10px',
+		    "padding-bottom": '10px',
+		    "padding-left": '5px',
+		    "margin-right": '10px'});
+	});
+	$('span.header').css({'font-size': '1.0em', 'font-weight': 'bold'});
+	$('.manage').css({'position': 'relative', 'left': '300px'});
+});
+</script>
+
+
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+	<h3><a href="">Studies</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_create_studies %}">Add Studies</a><br><br>
+		<a href="{% url portfolio_manage_portfolio %}">Go to Portfolio</a><br><br>
+		<a href="{% url space_space_list_spaces %}">Go to Spaces</a>
+	</div>
+	<h3><a href="">Bio</a></h3>
+	<div class="menu-space">
+		{% if bio %}
+		<a href="{% url portfolio_edit_personal %}">Edit Bio</a><br><br>
+		{% else %}
+		<a href="{% url portfolio_create_personal %}">Create Bio</a><br><br>
+		{% endif %}
+		<a href="{% url portfolio_main_personal %}">Manage Bio</a>
+	</div>
+		
+	<h3><a href="">Projects</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_create_project %}">Create Project</a><br><br>
+		<a href="{% url portfolio_manage_portfolio %}">Manage Projects</a>
+	</div>
+	<h3><a href="">Skills</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_create_skill %}">Create Skill</a><br><br>
+		<a href="{% url portfolio_main_skill %}">Manage Skills</a>
+	</div>
+	<h3><a href="">Categories</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_create_category %}">Create Category</a><br><br>
+		<a href="{% url portfolio_main_category %}">Manage Categories</a>
+	</div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+	<h2>Studies</h2>
+	{% if object_list %}
+		{% for study in object_list %}
+		<div class="span-12 append-4 last">
+			<div class="borde">
+				<span class="position">
+					<p><span class="header">Title:</span> {{ study.title }}</p>
+					<p><span class="header">Place:</span> {{ study.place}}</p>
+					<p><span class="header">From</span> {{ study.start|date:"F jS, Y" }}</p>
+					<p><span class="header">To</span> {{ study.end|date:"F jS, Y"}}</p>
+					
+					{% if study.speciality %}
+						<p><span class="header">Speciality:</span></p>
+						<p>{{ study.speciality_html|safe}}</p>
+					{% endif %}
+					
+					{% if study.additional_info %}
+						<p><span class="header">Additional information:</span></p>
+						{{ study.additional_info_html }}
+					{% endif %}
+					<span class="manage">
+						<a href="{% url portfolio_edit_studies study.id %}">Edit</a>
+						<a href="{% url portfolio_delete_studies study.id %}">Delete</a>
+					</span>
+				</span>
+			</div>
+		</div>
+		{% endfor %}
+	{% else %}
+		<div class="span-8 append-8 last">
+			<p>There are no studies defined </p>
+			<span class="manage">
+				<a href="{% url portfolio_create_studies %}">Add studies</a>
+			</span>
+		</div>
+	{% endif %}
+
+{% endblock %}

@@ -1,0 +1,228 @@
+{% extends "fhy/base_menu.html" %}
+
+{% block extra-head %}
+<script type="text/javascript" src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js"></script>
+{{ block.super }}
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+	<h3><a href="#">File Manager</a></h3>
+	<div class="menu-space">
+		<a href="{% url fhy_add_folder_in_root space.slug %}">Create new folder</a><br><br>
+		<a href="{% url fhy_add_file space.slug idfolder %}">Upload file</a><br><br>
+		<a href="{% url fhy_add_image space.slug idfolder %}">Upload image</a><br><br>
+		<a href="{% url space_space_list_objects space.slug %}">Go to your space</a>
+	</div>
+</div>
+{% endblock menu-group %}
+
+{% block content %}
+
+{% load folder_tags %}
+
+{% get_folder_list idfolder as folder_path %}
+
+<p>Path: /
+{% for f in folder_path %}
+	{% if forloop.first %}
+		<a href="{% url fhy_show_root_list space.slug %}">{{ f.title }}</a>/
+	{% else %}
+		<a href="{% url fhy_show_folder_content_list space.slug f.id %}">{{ f.title }}</a>/
+	{% endif %} 
+{% endfor %}
+</p>
+
+
+{% if not object_list and not folders %}
+	There is no content inside
+{% else %}
+
+	{% if folders %}
+		<!--   Folders:-->
+		<style type="text/css">
+		.tooltip_folder {
+			display:none;
+			/*background:transparent url({{MEDIA_URL}}/images/relleno-right3.png) no-repeat;*/
+			text-align:left;
+			font-size:12px;
+			height:158px;
+			width:300px;
+			padding:10px 70px; 
+			color:#fff;
+		}
+		
+		.tooltip_folder .edit_folder {
+			margin: 65px 0 0 -50px;
+		}
+		</style>
+		
+		<div class="span-4 append-12 last"> 
+		{% for folder in folders %}
+			
+		
+		<div class="folder">
+				<img src="{{ MEDIA_URL }}/images/folder_icon2.png" alt="" >
+				<a href="{% url fhy_show_folder_content_list space.slug folder.id %}" title="">{{ folder.title }}</a>
+		</div>
+		
+		<div class='tooltip_folder'>
+			<div class="edit_folder">
+				<a href="{% url fhy_edit_file space.slug folder.id 0 %}">
+					<img src="{{ MEDIA_URL}}/images/edit_folder.png" alt=""/>Edit
+				</a>
+				| 
+				<a href="{% url fhy_delete_file space.slug, folder.id %}">
+					<img src="{{ MEDIA_URL}}/images/borrar_fhy.png" alt="delete">Delete
+				</a>
+			</div>
+		</div>
+		{% endfor %}
+		</div>
+		<script type="text/javascript">
+		$(".folder").tooltip({
+		position: 'center right',  
+		effect: 'fade',
+		opacity:0.7,
+		});
+		</script>
+		
+	{% endif %}
+
+	{% if object_list %} <!--   Files: --> 
+	<style type="text/css">
+
+	/* tooltip styling. by default the element to be styled is .tooltip  */
+	.tooltip {
+		display:none;
+		background:transparent url({{MEDIA_URL}}/images/relleno-right3.png) no-repeat;
+		text-align:left;
+		font-size:12px;
+		height:158px;
+		width:300px;
+		padding:10px 70px; 
+		color:#fff;
+	}
+	
+	.tooltip .description {
+		margin: 0 0 0 80px;
+		width: 150px;
+		height: 100px;
+	}
+	
+	.tooltip .description .label{
+		color: yellow;
+	}
+	
+	.tooltip .edit {
+		margin: 120px 0 0 150px;
+	}
+	
+	.tooltip .edit a{
+			color: yellow;
+	}
+	
+	.tooltip table{
+		float:right;
+		margin:0 -80px 0 0;
+	}
+	
+	.tooltip img{
+		float:left;
+		margin: 15px 0;
+		/*margin:0 15px 20px 0;*/
+		width: 100px;
+		/*height: 100px;*/
+	}
+	
+	.demo {
+		margin: 4px 0 0 0 ;
+		width: 130px;
+	}
+	
+	</style>
+		{% for o in object_list %}
+		<div class="span-4 append-12 last">
+			<div class="span-3">
+				<div class="demo">
+		    		<img src="{{ MEDIA_URL }}/images/pdf.png" alt="" src="">
+		    		<a href="{{ MEDIA_URL }}/{{ o.file }}" title="{{o.description}}">{{o.title}}</a>
+		    	</div>
+		    </div>
+		    
+		    <div class='tooltip'>
+					<div class="span-1">
+						<img src="{{MEDIA_URL}}/{{ o.file }}" alt=""/>
+					</div>
+					<div class="span-3 last">					
+						<div class="description">
+							<p class="label">Description:</p>
+							<p>{{ o.description|truncatewords:"16" }}</p>
+						</div>
+					</div>
+					<div class="edit">
+						<a href="{% url fhy_edit_file space.slug o.id 0 %}">Edit</a> |
+			    		<a href="{% url fhy_delete_file space.slug, o.id%}">Delete</a>
+					</div>
+			</div>
+		    	
+		</div>
+		{% endfor %}
+		<script type="text/javascript">
+		$(".demo").tooltip({
+		position: 'center right',  
+		effect: 'fade',
+		opacity:0.7,
+		});
+		</script>
+	{% endif %}
+	
+	<!--  Images -->
+	<style type="text/css">
+	.image {
+		margin: 4px 0 0 0 ;
+		width: 130px;
+	}
+	</style>
+	
+	{% if images %}
+		{% for image in images %}
+		<div class="span-4 append-12 last">
+			<div class="span-3">
+				<div class="image">
+		    		<img src="{{ MEDIA_URL }}/images/image.png" alt="" src="">
+		    		<a href="{{ MEDIA_URL}}/{{ image.file }}">{{image.title}}</a>
+		    	</div>
+		    </div>
+		    
+		    <div class='tooltip'>
+					<div class="span-1">
+						<img src="{{ image.file.url_125x125 }}" alt=""/>
+					</div>
+					<div class="span-3 last">					
+						<div class="description">
+							<p class="label">Description:</p>
+							<p>{{ image.description|truncatewords:"16" }}</p>
+						</div>
+					</div>
+					<div class="edit">
+						<a href="{% url fhy_edit_image space.slug image.id 0 %}">Edit</a> |
+			    		<a href="{% url fhy_delete_file space.slug, image.id%}">Delete</a>
+					</div>
+			</div>
+		    
+		</div>
+		{% endfor %}
+		
+		<script type="text/javascript">
+		$(".image").tooltip({
+		position: 'center right',  
+		effect: 'fade',
+		opacity:0.7,
+		});
+		</script>
+	{% endif %}
+	 
+{% endif %}
+
+{% endblock content %}

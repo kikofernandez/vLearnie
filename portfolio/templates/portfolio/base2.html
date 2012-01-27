@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>{% block title %}Portfolio{% endblock %}</title>
+<!-- <link type="text/css" rel="stylesheet" href="/media/portfolio.css" /> -->
+<link rel="stylesheet" href="/media/css/blueprint/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/media/css/blueprint/print.css" type="text/css" media="print">	
+<!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+<script type='text/javascript' src='{{ MEDIA_URL}}js/jquery.js'></script>
+
+{% block extra-head %}
+{% include "jquery_definitions.html" %}
+<script src="{{ MEDIA_URL }}js/jquery_right_hand_menu.js"></script>
+{% endblock %}
+</head>
+
+<body>
+<div class="container">
+	<div class="span-20 push-4 last">
+		<img alt="" src="/media/images/msf_header.jpg">
+	</div>
+	
+	<hr />
+	
+	<div class="span-5 colborder">
+		{% block menu-group %}
+		{% endblock %}
+	</div>
+	
+	<div class="span-16 last">
+		<div id="content">
+			{% block content %}{% endblock %}
+		</div>
+	</div>
+</div>
+</body>
+</html>

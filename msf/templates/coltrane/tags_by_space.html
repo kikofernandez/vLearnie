@@ -1,0 +1,32 @@
+{% extends "base_tags.html"%}
+
+{% block head %}{{ block.super }} {{ space.title }}{% endblock %}
+{% block user-log-in %}{{ user.username }} <a href="#">Logout</a>{% endblock %}
+
+{% block spacemenu %}
+<a href="{% url space_public_space_detail username spacename %}">Main Space</a><br><br>
+<a href="{% url coltrane_entry_archive_index_space username %}">User Spaces</a>
+{% endblock %}
+
+{% block content %}
+<div id="tags"> 
+<h2>Tags by entries</h2>
+
+{% if not tags %}
+<p>There are no tags.</p>
+{% else %}
+{% for tag in tags %}
+	<a href="{% url coltrane_entries_tagged username spacename tag.id %}">{{ tag }}</a>
+{% endfor %}
+{% endif %}
+
+<h2>Tags by links</h2>
+{% if not links %}
+<p>There are no links.</p>
+{% else %}
+{% for link in links %}
+	<a href="{% url coltrane_links_tagged username spacename link.id %}">{{ link }}</a>
+{% endfor %}
+{% endif %}
+</div>
+{% endblock %}

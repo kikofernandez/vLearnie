@@ -1,0 +1,209 @@
+{% extends "space/base_menu.html"%}
+
+{% block extra-head %}
+<script src="http://cdn.jquerytools.org/1.2.5/jquery.tools.min.js"></script>
+{{ block.super }}
+
+
+<script type="text/javascript">
+$(function() {
+	$( "a", ".enter_site" ).button();
+	$( "a" , ".enter_site" ).click(function() { 
+		window.location.href = "{% url space_space_list_entry_objects space.slug %}"; }); 
+	$( "a", ".manage_files" ).button();
+	$( "a", ".manage_links" ).button()
+	$("#second-section").css('margin-bottom', '20px');
+	$( "a" , ".manage_files" ).click(function() { 
+		window.location.href = "{% url fhy_show_root_list space.slug %}"; });
+	$('.manage').button().css({'margin-bottom': '15px', 'margin-top': '20px'});
+	$(".excerpt").hide();
+});
+</script>
+
+<style type="text/css">
+	.tooltip_entry {
+		display:none;
+		/*background:transparent url({{MEDIA_URL}}/images/relleno-right3.png) no-repeat;*/
+		text-align:left;
+		font-size:12px;
+		height:158px;
+		width:300px;
+		padding:10px 70px; 
+		color:#fff;
+	}
+	
+	.tooltip_entry .edit_entry {
+		margin: 65px 0 0 -70px;
+	}
+	
+	#sidebar ul { list-style-type: none;}
+</style>
+{% endblock %}
+
+{% block title %}
+Resume index Space
+{% endblock %}
+
+{% block menu-group %}
+<div id="accordion">
+	<h3><a href="#">Blog</a></h3>
+	<div class="menu-space">
+		<a href="{% url space_space_list_entry_objects space.slug %}">Manage Blog</a><br><br>
+		<a href="{% url space_space_create_entry space.slug %}">Add Entry</a><br><br>
+		<a href="{% url space_space_create_category space.slug %}">Add Category</a><br><br>
+	</div>
+	
+	<h3><a href="#">Files</a></h3>
+	<div class="menu-space">
+		<a href="{% url fhy_show_root_list space.slug %}">Manage Files</a><br><br>
+		<a href="{% url fhy_add_folder_in_root space.slug %}">Add Folder</a><br><br>
+		<a href="{% url fhy_add_file_in_root space.slug 0 %}">Add File</a><br><br>
+		<a href="{% url fhy_add_file_in_root space.slug 1 %}">Add Image</a>
+	</div>
+	
+	<h3><a href="#">Portfolio</a></h3>
+	<div class="menu-space">
+		<a href="{% url portfolio_manage_portfolio %}">Manage Portfolio</a><br><br>
+		<a href="{% url portfolio_create_project %}">Add Project</a><br><br>
+		<a href="{% url portfolio_create_category %}">Add Category</a><br><br>
+		<a href="{% url portfolio_create_skill %}">Add Skill</a>
+	</div>
+
+	<h3><a href="#">Links</a></h3>
+	<div class="menu-space">
+		<a href="{% url space_space_list_links_objects space.slug %}">Manage Links</a><br><br>
+		<a href="{% url space_space_create_link space.slug %}">Add Link</a>
+	</div>
+</div>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="span-16">
+
+{% load coltrane_tags %}
+
+{% get_latest_content coltrane.entry user.username space.slug 5 as latest_entries %}
+
+
+<div class="span-7 colborder">
+<h2>Latest entries</h2>	
+{% for entry in latest_entries %}
+	<div class="span-4 append-3">
+		<div class="entry">
+			<img src="{{ MEDIA_URL }}/images/pdf.png" alt="" >
+			<a id="{{entry.id}}" href="{% url space_space_edit_entry space.slug entry.slug %}" title="">{{ entry.title }}</a>
+			
+		</div>
+		
+		<div class='tooltip_entry'>
+			<div class="edit_entry">
+				<a href="{% url space_space_edit_entry space.slug entry.slug %}">
+					<img src="{{ MEDIA_URL}}/images/edit_file.png" alt="delete">Edit
+				</a> |
+				<a href="{% url space_space_delete_entry space.slug entry.id %}">
+					<img src="{{ MEDIA_URL}}/images/borrar_fhy.png" alt="delete">Delete
+				</a>
+			</div>
+		</div>
+		<div class="span-7 last">
+			<div class="excerpt">
+				<div id="{{entry.slug}}" >
+				<p>
+				{% if entry.excerpt_html %}
+					{{ entry.excerpt_html|safe }}
+				{% else %}
+				    {{ entry.body_html|truncatewords_html:"50"|safe }}
+				{% endif %}
+				</p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endfor %}
+	<div class="span-4 prepend-3 last">
+		<div class="manage">
+			<a href="{% url space_space_list_entry_objects space.slug %}">Enter in Blog</a>
+		</div>
+	</div>
+</div>
+<script>
+$(".entry").tooltip({
+position: 'center right',  
+effect: 'fade',
+opacity:0.7,
+});
+</script>
+
+
+
+
+<!-- 
+<div class="span-8 last">
+{% get_latest_content fhy.filefhy user.username space.id 5 as latest_files %}
+	<h2>Latest files</h2>
+	{% for file in latest_files %}
+		<p><a href="{{MEDIA_URL}}{{ file.file }}">{{ file.title }}</a>
+		</p>
+	{% endfor %}
+	<div class="span-4 prepend-4 last">
+		<div class="manage">
+			<a href="{% url fhy_show_root_list space.slug %}">Manage files</a>
+		</div>
+	</div>
+</div>
+-->
+{% load folder_tags %}
+
+<div class="span-8 last">
+{% get_latest_files both space.id 5 as latest_files %}
+	<h2>Latest files</h2>
+	{% for file in latest_files %}
+		<p><a href="{{MEDIA_URL}}{{ file.file }}">{{ file.title }}</a>
+		</p>
+	{% endfor %}
+	<div class="span-4 prepend-4 last">
+		<div class="manage">
+			<a href="{% url fhy_show_root_list space.slug %}">Manage files</a>
+		</div>
+	</div>
+</div>
+
+<div id="second-section">
+	<div class="span-7 colborder">
+	<!-- LINKS section -->
+		{% get_latest_content coltrane.link user.username space.id 5 as latest_links %}
+		<h2>Latest links</h2>
+		{% for link in latest_links %}
+			<p><a href="{% url space_space_edit_link space.slug link.slug %}">{{ link.title }}</a>
+			</p>
+		{% endfor %}
+		<div class="span-4 prepend-4 last">
+			<div class="manage">
+				<a href="{% url space_space_list_links_objects space.slug %}">Manage links</a>
+			</div>
+		</div>
+	</div>
+	
+	<div class="span-8 last">
+	<!-- PORTFOLIO section -->
+		<h2>Portfolio</h2>
+		{% if bio %}
+		<p>{{bio.last_name}}, {{bio.first_name}}</p>
+		<p>{{ bio.birthday|date:"F jS, Y"}}</p>
+			{% if bio.bio %}
+				{{ bio.bio|truncatewords:"20" }}
+			{% endif %}
+		{% else %}
+			<p>You have not added yet your personal information.</p>
+		{% endif %}
+		<div class="span-4 prepend-4 last">
+			<div class="manage">
+				<a href="{% url portfolio_manage_portfolio %}">Manage portfolio</a>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+{% endblock %}

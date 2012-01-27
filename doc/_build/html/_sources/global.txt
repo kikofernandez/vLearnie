@@ -1,0 +1,7 @@
+FriendyControl Models application
+====================================
+
+.. contents:
+   :maxdepth: 2
+
+
