@@ -22,8 +22,9 @@ Instalation
 
 If you are using this application as a stand-alone application, then you have to download the project, go to the file **vLearnie/msf/settings.py** and do the modifications if any, and run the server::
 
-  $> python manage.py syncdb
-  $> python manage.py runserver
+    $> python manage.py syncdb
+    
+    $> python manage.py runserver
 
 Platform Documentation
 -----------------------
