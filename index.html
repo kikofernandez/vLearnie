@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Vlearnie : Portfolio Platform that can be used with Moodle and become a Personal Learning Environment" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Vlearnie</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/kessenchu/vLearnie">View on GitHub</a>
+
+          <h1 id="project_title">Vlearnie</h1>
+          <h2 id="project_tagline">Portfolio Platform that can be used with Moodle and become a Personal Learning Environment</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/kessenchu/vLearnie/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/kessenchu/vLearnie/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>vLearnie</h1>
+
+<p>This software provides you with a multi-user portfolio system, with a clean and simple user interface.</p>
+
+<h2>Specifications</h2>
+
+<p>The following is a list of the current features that are implemented:</p>
+
+<ul>
+<li>The user can create his own <strong>Personal Spaces</strong>
+</li>
+<li>
+<strong>Blog system</strong> based on personal spaces, for each personal space the user will have a new blog system</li>
+<li>
+<strong>Link area</strong> where you can keep track of your favorite links</li>
+<li>
+<strong>Portfolio system</strong> where the user can add personal information, studies and projects / work done.</li>
+<li>
+<strong>Virtual Filesystem</strong> where the user can create virtual folders and upload his files.</li>
+<li>
+<strong>Community</strong>, similar to a forum but the users can publish articles inside every community. Every community has a built-in support for RSS and Atom.</li>
+<li>
+<strong>Permission control manager</strong>, where the user can select what people from the system can look at his blog/s.</li>
+<li>
+<strong>Integration within Moodle</strong>, it offers integration with Moodle sharing the Moodle session file.</li>
+<li>
+<strong>RESTful web service API included</strong>, it has a RESTful API of web services that we built using the Piston framework. You can pretty much have the same functionality as the platform using these web services.</li>
+</ul><h2>Instalation</h2>
+
+<p>If you are using this application as a stand-alone application, then you have to download the project, go to the file <strong>vLearnie/msf/settings.py</strong> and do the modifications if any, and run the server::</p>
+
+<pre><code>$&gt; python manage.py syncdb
+
+$&gt; python manage.py runserver
+</code></pre>
+
+<h2>Platform Documentation</h2>
+
+<p>More documentation about the platform and how to use the RESTful web service API can be found at: <strong>vLearnie/doc/_built/html/index.html</strong></p>
+
+<h2>Dependencies</h2>
+
+<p>List of dependencies:</p>
+
+<ul>
+<li>Markdown==2.0.3</li>
+<li>MySQL-python==1.2.3</li>
+<li>PIL==1.1.7</li>
+<li>SQLAlchemy==0.6.6</li>
+<li>Sphinx==1.0.7</li>
+<li>django-piston==0.2.2</li>
+<li>django-tagging==0.3.1</li>
+</ul><h2>Demo</h2>
+
+<p>Demo at <a href="http://vimeo.com/35751402">http://vimeo.com/35751402</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Vlearnie maintained by <a href="https://github.com/kessenchu">kessenchu</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
