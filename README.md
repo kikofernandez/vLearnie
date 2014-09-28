@@ -1,3 +1,4 @@
+[![Codacy Badge](https://www.codacy.com/project/badge/235f5856e72a434193d67ea897196047)](https://www.codacy.com)
 vLearnie
 ==========
 
